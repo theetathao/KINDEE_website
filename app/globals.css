@@ -12,7 +12,7 @@ section{position:relative;overflow:hidden;width:100%}
 .outlineBtn{border:3px solid var(--gold);color:var(--gold)}
 .goldBtn{background:var(--gold);color:var(--dark)}
 
-.hero{height:max(720px,100svh);background:linear-gradient(0deg,rgba(0,0,0,.82),transparent 48%),linear-gradient(rgba(37,37,37,.4),rgba(37,37,37,.4)),url('/assets/hero-overlay.png') center/cover,url('/assets/hero.png') center/cover}
+.hero{height:100svh;background:linear-gradient(0deg,rgba(0,0,0,.82),transparent 48%),linear-gradient(rgba(37,37,37,.4),rgba(37,37,37,.4)),url('/assets/hero-overlay.png') center/cover,url('/assets/hero.png') center/cover}
 .nav{position:fixed;z-index:50;top:40px;left:50%;transform:translateX(-50%);width:80%;height:72px;padding:4px 32px;display:grid;grid-template-columns:1fr 180px 1fr;align-items:center;border-radius:20px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);box-shadow:6px 13px 20px rgba(85,53,53,.4);transition:height .28s ease}
 .nav>.outlineBtn{justify-self:start}
 .nav>a[aria-label="Kin Dee home"]{display:grid;place-items:center;height:64px}
@@ -35,7 +35,7 @@ section{position:relative;overflow:hidden;width:100%}
 .heroCopy h1{width:695px;max-width:78vw;margin:0 0 40px;font:500 72px/76px 'Cormorant Garamond';letter-spacing:-.72px;text-transform:uppercase}
 .heroCopy img{display:block;width:40px;height:40px}
 
-.story{height:720px;background:var(--cream)}
+.story{height:100svh;background:var(--cream)}
 .copy{display:flex;flex-direction:column;gap:40px;z-index:2}
 .copy span,.serviceCopy>span,.productIntro span{font:700 48px/52px 'Cormorant Garamond';color:var(--red)}
 .copy h2,.serviceCopy h2{margin:0;font:700 72px/76px 'Cormorant Garamond';letter-spacing:-.72px}
@@ -67,13 +67,13 @@ section{position:relative;overflow:hidden;width:100%}
 .categoryCard>span:last-child{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;font-size:18px;line-height:28px}
 .categoryCard b{color:var(--gold);font-size:24px;font-weight:400}
 
-.quality{height:720px;background:var(--taupe)}
+.quality{height:100svh;background:var(--taupe)}
 .copy.light{color:var(--cream)}
 .quality .copy{top:133px;width:586px}
 .quality>img{position:absolute;right:1.5%;top:45px;width:48%;height:650px;object-fit:contain}
 .selected{position:absolute;right:28.2%;bottom:114px;color:var(--cream)}
 
-.service{height:900px;background:linear-gradient(90deg,transparent,rgba(37,37,37,.8)),url('/assets/farm.png') center/cover;color:#fff}
+.service{height:100svh;background:linear-gradient(90deg,transparent,rgba(37,37,37,.8)),url('/assets/farm.png') center/cover;color:#fff}
 .serviceCopy{position:absolute;right:8.2%;top:117px;width:487px;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:40px}
 .serviceCopy>span{color:var(--gold)}
 .serviceCopy h2{margin:0}
@@ -103,7 +103,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 .socials img{width:32px;height:32px;object-fit:contain}
 
 @media(max-width:800px){
-  .hero{height:100svh;min-height:680px}
+  .hero{height:100svh}
   .nav{top:18px;width:calc(100% - 48px);height:74px;padding:8px 14px;grid-template-columns:1fr 90px 1fr}
   .nav>.outlineBtn{padding:8px 10px;border-width:2px;font-size:13px}
   .logo{width:88px;height:60px}
@@ -111,7 +111,8 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
   .menuPanel{grid-template-columns:1fr;gap:0}.productMenu,.menuDivider{display:none}
   .mainMenu a{height:clamp(54px,10svh,72px);font-size:clamp(30px,9vw,40px)}
   .heroCopy{left:24px;bottom:44px}.heroCopy h1{max-width:88vw;font-size:44px;line-height:46px}
-  .story,.products,.quality,.service,.catalog{height:auto;min-height:720px;padding:72px 24px}
+  .products,.catalog{height:auto;min-height:720px;padding:72px 24px}
+  .story,.quality,.service{height:100svh;min-height:0;padding:72px 24px}
   .copy.left,.copy.right,.serviceCopy,.productIntro{position:relative;inset:auto;transform:none;width:100%;max-width:none;text-align:left;align-items:flex-start}
   .copy h2,.serviceCopy h2{font-size:48px;line-height:50px}.copy span,.serviceCopy>span,.productIntro span{font-size:36px}
   .spoon,.bowl{position:relative;inset:auto;width:100%;height:330px;object-fit:contain;margin-top:24px}
