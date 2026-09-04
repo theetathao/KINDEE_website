@@ -5,6 +5,7 @@
 
 /* Keep the desktop header centered at 80% of the viewport. */
 .nav{width:80%}
+.nav{position:fixed}
 .nav>.outlineBtn,.nav>a[aria-label="Kin Dee home"],.nav>.menuButton{position:relative;top:-6px}
 @media(max-width:800px){.nav{width:calc(100% - 48px)}}
 

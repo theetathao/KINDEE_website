@@ -18,7 +18,7 @@ export default function Home() {
             <div className="menuPanel">
               <div className="productMenu">
                 <h2>Explore Products</h2>
-                {['Honey','Condiments','Ready to cook','Snacks','Coconut milk','Rice','Dried Fruits','Beverages','Frozen Foods','Accessory Items'].map(item => <a href="#products" onClick={() => setMenuOpen(false)} key={item}>{item}</a>)}
+                {['Honey','Condiments','Ready to cook','Snacks','Coconut milk','Rice','Dried Fruits'].map(item => <a href="#products" onClick={() => setMenuOpen(false)} key={item}>{item}</a>)}
                 <a className="viewAll" href="#products" onClick={() => setMenuOpen(false)}>View all <img src={`${A}arrow-right.svg`} alt="" /></a>
               </div>
               <span className="menuDivider" aria-hidden="true" />
