@@ -129,7 +129,7 @@ export default function Home() {
             <em className="note perfect">Perfect bite :)</em>
           </div>
           <div className="storyLayer tasteLayer">
-            <em className="note authentic"><span className="handArrow" aria-hidden="true"><i /></span>Authentic Taste</em>
+            <em className="note authentic"><span className="handArrow" aria-hidden="true"><img src={`${A}handwriting-arrow.svg`} alt="" /></span><span className="handText">Authentic Taste</span></em>
             <div className="copy right">
               <div className="copyLead"><span>02.</span><h2>It begins<br/>with a taste.</h2></div>
               <div className="copyBody"><p>Bringing the authentic flavors and culinary heritage of Southeast Asia to every table.</p><a className="goldBtn" href="#products">Explore Now <Arrow /></a></div>
@@ -138,20 +138,20 @@ export default function Home() {
         </div>
       </section>
       <section className="products" id="products">
-        <div className="productIntro" data-reveal><span>03.</span><h2>Feature Products</h2><p>From sauces and condiments to coconut milk, rice and ready-to-cook essentials, Kin Dee brings together a wide range of Southeast Asian food products.</p></div>
+        <div className="productIntro"><div className="sectionHeadingReveal" data-reveal><span>03.</span><h2>Feature Products</h2></div><p className="revealDelay1" data-reveal>From sauces and condiments to coconut milk, rice and ready-to-cook essentials, Kin Dee brings together a wide range of Southeast Asian food products.</p></div>
         <img className="productHero revealDelay1" data-reveal src={`${A}product-main.png`} alt="Kin Dee sauce products" />
         <div className="productCard revealDelay2" data-reveal><strong>Thai Jim Jaew Sauce<br/>(Spicy BBQ Sauce)</strong><small>13.76 oz</small></div><em className="note flavor revealDelay2" data-reveal>Authentic flavor, always.</em>
         <div className="categoryArea revealDelay2" data-reveal><p>Sort by Category</p><div className="categories">{['Honey','Condiments','Ready to cook','Snacks','Coconut Milk','Rice'].map((x,i)=><button className="categoryCard" key={x}><span className="categoryImage" style={{backgroundPosition:`${i * 20}% 15%`}}/><span>{x}<b>›</b></span></button>)}</div></div>
       </section>
       <section className="quality" id="quality">
-        <div className="copy left light" data-reveal><span>04.</span><h2>Quality Starts<br/>With What Goes In.</h2><p>We carefully select ingredients and maintain high standards of food quality and safety — because great flavor begins long before it reaches the table.</p><a className="goldBtn" href="#service">Learn more <Arrow /></a></div>
+        <div className="copy left light"><div className="sectionHeadingReveal" data-reveal><span>04.</span><h2>Quality Starts<br/>With What Goes In.</h2></div><p className="revealDelay1" data-reveal>We carefully select ingredients and maintain high standards of food quality and safety — because great flavor begins long before it reaches the table.</p><a className="goldBtn revealDelay2" data-reveal href="#service">Learn more <Arrow /></a></div>
         <img className="revealDelay1" data-reveal src={`${A}ingredients.png`} alt="Fresh lime, garlic, chili and herbs" /><em className="note selected revealDelay2" data-reveal>carefully selected ↑</em>
       </section>
       <section className="service" id="service">
-        <div className="serviceCopy" data-reveal><span>05.</span><h2>Every Bite<br/>Tells a Story.</h2><p>We believe in protecting the environment for future generations by partnering with suppliers who practice sustainable farming.</p><a className="outlineBtn" href="#catalog">Our Service <Arrow /></a></div>
+        <div className="serviceCopy"><div className="sectionHeadingReveal" data-reveal><span>05.</span><h2>Every Bite<br/>Tells a Story.</h2></div><p className="revealDelay1" data-reveal>We believe in protecting the environment for future generations by partnering with suppliers who practice sustainable farming.</p><a className="outlineBtn revealDelay2" data-reveal href="#catalog">Our Service <Arrow /></a></div>
         <div className="values revealDelay1" data-reveal>{[["plant.svg","Sustainable Farming","Partnering with suppliers who practice sustainable farming."],["medal.svg","Quality from the Source","Carefully managed from sourcing through processing."],["mountains.svg","Traceable Ingredients","Raw materials can be traced back to their source."]].map(([icon,title,body])=><article key={title}><img src={A+icon} alt=""/><div><h3>{title}</h3><p>{body}</p></div></article>)}</div>
       </section>
-      <section className="catalog" id="catalog"><div className="copy left light" data-reveal><span>04.</span><h2>Bring More to<br/>the Table.</h2><p>Explore Kin Dee’s complete range of Southeast Asian food products, from everyday essentials to authentic regional flavors.</p><a className="outlineBtn" href="#">Download Catalog</a></div><img className="revealDelay1" data-reveal src={`${A}catalog.png`} alt="Kin Dee product catalog and ingredients"/><em className="note discover revealDelay2" data-reveal>there’s always more to discover</em></section>
+      <section className="catalog" id="catalog"><div className="copy left light"><div className="sectionHeadingReveal" data-reveal><span>04.</span><h2>Bring More to<br/>the Table.</h2></div><p className="revealDelay1" data-reveal>Explore Kin Dee’s complete range of Southeast Asian food products, from everyday essentials to authentic regional flavors.</p><a className="outlineBtn revealDelay2" data-reveal href="#">Download Catalog</a></div><img className="revealDelay1" data-reveal src={`${A}catalog.png`} alt="Kin Dee product catalog and ingredients"/><em className="note discover revealDelay2" data-reveal>there’s always more to discover</em></section>
       <footer><div className="footerMain" data-reveal><div><img className="footerLogo" src={`${A}logo.png`} alt="Kin Dee"/><div className="links"><div><a href="#about">About</a><a href="#products">Products</a><a href="#service">Services</a><a href="#">Recipes</a><a href="#">Contact</a></div><div><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Cookies</a></div></div></div><div className="sealGrid">{Array.from({length:14},(_,i)=><img src={`${A}badge-${String(i+1).padStart(2,'0')}.png`} alt="" key={i}/>)}</div></div><div className="copyright revealDelay1" data-reveal><span>©THE KIN DEE CO., LTD.</span><span className="socials"><img src={`${A}social-fb.svg`} alt="Facebook"/><img src={`${A}social-x.svg`} alt="X"/><img src={`${A}social-linkedin.svg`} alt="LinkedIn"/><img src={`${A}social-ig.svg`} alt="Instagram"/></span></div></footer>
     </main>
   );
