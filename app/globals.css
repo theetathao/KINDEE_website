@@ -41,23 +41,27 @@ section{position:relative;overflow:hidden;width:100%}
 .storyLayer a{pointer-events:auto}
 .copy{display:flex;flex-direction:column;gap:clamp(20px,4svh,40px);z-index:2}
 .copyLead,.copyBody{display:flex;flex-direction:column;gap:clamp(16px,2.5svh,28px)}
-.copy span,.serviceCopy>span,.productIntro span{font:700 48px/52px 'Cormorant Garamond';color:var(--red)}
+.copy>span,.copyLead>span,.serviceCopy>span,.productIntro>span{font:700 48px/52px 'Cormorant Garamond';color:var(--red)}
 .copy h2,.serviceCopy h2{margin:0;font:700 56px/60px 'Cormorant Garamond';letter-spacing:-.56px}
 .copy p,.serviceCopy p{margin:0;font-size:18px;line-height:28px}
 .copy.left{position:absolute;left:8.47%;top:clamp(64px,14svh,125px);width:306px}
-.storySpoon{position:absolute;z-index:1;left:50%;top:63%;width:min(108svh,980px);height:auto;object-fit:contain;opacity:var(--spoon-opacity);transform:translate(-50%,calc(-50% + var(--spoon-rise))) rotate(-90deg) scale(var(--spoon-scale));transform-origin:center;will-change:transform,opacity}
-.storyBowl{position:absolute;z-index:1;left:var(--bowl-left);top:59%;width:min(77vw,1100px);height:min(82svh,740px);object-fit:contain;opacity:var(--bowl-opacity);transform:translate(-50%,-50%) scale(var(--bowl-scale));transform-origin:center;will-change:left,transform,opacity}
-.passionLayer .copyLead{opacity:var(--passion-lead);transform:translateY(var(--passion-lead-y));will-change:transform,opacity}
-.passionLayer .copyBody,.passionLayer .sideCopy{opacity:var(--passion-body);transform:translateY(var(--passion-body-y));will-change:transform,opacity}
+.storySpoon{position:absolute;z-index:1;left:50%;top:63%;width:min(108svh,980px);height:auto;object-fit:contain;opacity:var(--spoon-opacity);transform:translate(-50%,calc(-50% + var(--spoon-rise))) rotate(-90deg) scale(var(--spoon-scale));transform-origin:center;transition:transform .18s cubic-bezier(.22,.61,.36,1),opacity .18s ease;will-change:transform,opacity}
+.storyBowl{position:absolute;z-index:1;left:var(--bowl-left);top:59%;width:min(77vw,1100px);height:min(82svh,740px);object-fit:contain;opacity:var(--bowl-opacity);transform:translate(-50%,-50%) scale(var(--bowl-scale));transform-origin:center;transition:left .18s cubic-bezier(.22,.61,.36,1),transform .18s cubic-bezier(.22,.61,.36,1),opacity .18s ease;will-change:left,transform,opacity}
+.passionLayer .copyLead{opacity:var(--passion-lead);transform:translateY(var(--passion-lead-y));transition:transform .2s cubic-bezier(.22,.61,.36,1),opacity .2s ease;will-change:transform,opacity}
+.passionLayer .copyBody,.passionLayer .sideCopy{opacity:var(--passion-body);transform:translateY(var(--passion-body-y));transition:transform .2s cubic-bezier(.22,.61,.36,1),opacity .2s ease;will-change:transform,opacity}
 .sideCopy{position:absolute;right:8.2%;bottom:clamp(48px,10svh,97px);width:311px;margin:0;text-align:right;font-size:18px;line-height:28px}
 .note{font:700 42px/44px 'Caveat';color:var(--gray)}
 .perfect{position:absolute;right:25.3%;top:58%;opacity:var(--passion-note);transform:rotate(-6.2deg);will-change:opacity}
 .copy.right{position:absolute;right:8.2%;top:clamp(64px,16svh,147px);width:368px;text-align:right;align-items:flex-end}
 .storyLayer .copy.left,.storyLayer .copy.right{top:clamp(150px,20svh,190px)}
-.tasteLayer .copyLead{opacity:var(--taste-lead);transform:translateY(var(--taste-lead-y));will-change:transform,opacity}
-.tasteLayer .copyBody{align-items:flex-end;opacity:var(--taste-body);transform:translateY(var(--taste-body-y));will-change:transform,opacity}
+.tasteLayer .copyLead{opacity:var(--taste-lead);transform:translateY(var(--taste-lead-y));transition:transform .2s cubic-bezier(.22,.61,.36,1),opacity .2s ease;will-change:transform,opacity}
+.tasteLayer .copyBody{align-items:flex-end;opacity:var(--taste-body);transform:translateY(var(--taste-body-y));transition:transform .2s cubic-bezier(.22,.61,.36,1),opacity .2s ease;will-change:transform,opacity}
+.tasteLayer .goldBtn,.tasteLayer .goldBtn span{color:var(--dark)}
 .authentic{position:absolute;left:50.5%;top:76%;opacity:var(--taste-note);transform:rotate(-4deg);will-change:opacity}
-.authentic span{display:inline-block;margin-right:10px;font-size:52px;transform:rotate(-18deg)}
+.handArrow{display:inline-block;position:relative;width:104px;height:46px;margin-right:12px;vertical-align:middle}
+.handArrow:before{content:'';position:absolute;left:18px;top:3px;width:70px;height:31px;border-bottom:3px solid currentColor;border-left:3px solid currentColor;border-radius:0 0 0 75%;transform:rotate(9deg)}
+.handArrow:after{content:'';position:absolute;left:10px;top:14px;width:13px;height:13px;border-top:3px solid currentColor;border-left:3px solid currentColor;transform:rotate(-28deg)}
+.handArrow i{position:absolute;left:52px;top:22px;width:22px;height:18px;border:3px solid currentColor;border-top-color:transparent;border-left-color:transparent;border-radius:50%;transform:rotate(-18deg)}
 .storyStage[data-reduced-motion="true"] .storySpoon,.storyStage[data-reduced-motion="true"] .storyBowl,.storyStage[data-reduced-motion="true"] .copyLead,.storyStage[data-reduced-motion="true"] .copyBody,.storyStage[data-reduced-motion="true"] .sideCopy{transition:none;--spoon-rise:0px;--passion-lead-y:0px;--passion-body-y:0px;--taste-lead-y:0px;--taste-body-y:0px}
 
 .products{height:900px;background:linear-gradient(rgba(119,115,110,.9),rgba(119,115,110,.9)),url('/assets/products-bg.png') center/cover;color:#fff}
@@ -113,6 +117,13 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 .socials{display:flex;gap:16px}
 .socials img{width:32px;height:32px;object-fit:contain}
 
+@media(prefers-reduced-motion:no-preference){
+  [data-reveal]{opacity:0;translate:0 36px;transition:opacity .9s cubic-bezier(.22,.61,.36,1),translate .9s cubic-bezier(.22,.61,.36,1)}
+  [data-reveal].is-visible{opacity:1;translate:0 0}
+  [data-reveal].revealDelay1{transition-delay:.12s}
+  [data-reveal].revealDelay2{transition-delay:.24s}
+}
+
 @media(max-width:800px){
   .hero{height:100svh}
   .nav{top:18px;width:calc(100% - 48px);height:74px;padding:8px 14px;grid-template-columns:1fr 90px 1fr}
@@ -127,13 +138,13 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
   .storySequence{height:600svh}.storyStage{height:100svh}
   .copy.left,.copy.right,.serviceCopy,.productIntro{position:relative;inset:auto;transform:none;width:100%;max-width:none;text-align:left;align-items:flex-start}
   .copy,.serviceCopy{gap:20px}
-  .copy h2,.serviceCopy h2{font-size:42px;line-height:44px}.copy span,.serviceCopy>span,.productIntro span{font-size:34px}
+  .copy h2,.serviceCopy h2{font-size:42px;line-height:44px}.copy>span,.copyLead>span,.serviceCopy>span,.productIntro>span{font-size:34px}
   .storySpoon{top:65%;width:min(100svh,720px);height:auto}
   .storyBowl{width:105vw;height:58svh;top:62%}
   .storyLayer .copy.left,.storyLayer .copy.right{position:absolute;left:24px;right:24px;top:112px;width:auto;text-align:left;align-items:flex-start}
   .storyLayer .copyBody{align-items:flex-start}
   .sideCopy{position:absolute;left:24px;right:24px;bottom:7svh;width:auto;text-align:left;font-size:15px;line-height:22px}
-  .perfect{right:10%;top:66%}.authentic{left:42%;top:78%;font-size:28px}.authentic span{font-size:36px}
+  .perfect{right:10%;top:66%}.authentic{left:42%;top:78%;font-size:28px}.handArrow{width:78px;height:36px;margin-right:6px;transform:scale(.78);transform-origin:left center}
   .service:after{display:none}
   .productHero{position:relative;inset:auto;transform:none;width:100%;height:260px;margin-top:40px}
   .productCard{position:relative;inset:auto;width:100%;margin-top:20px}
