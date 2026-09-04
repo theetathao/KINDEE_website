@@ -45,7 +45,7 @@ section{position:relative;overflow:hidden;width:100%}
 .copy h2,.serviceCopy h2{margin:0;font:700 56px/60px 'Cormorant Garamond';letter-spacing:-.56px}
 .copy p,.serviceCopy p{margin:0;font-size:18px;line-height:28px}
 .copy.left{position:absolute;left:8.47%;top:clamp(64px,14svh,125px);width:306px}
-.storySpoon{position:absolute;z-index:1;left:50%;top:50%;width:min(300px,28vw);height:min(78svh,703px);object-fit:contain;opacity:var(--spoon-opacity);transform:translate(-50%,calc(-50% + var(--spoon-rise))) scale(var(--spoon-scale));transform-origin:center;will-change:transform,opacity}
+.storySpoon{position:absolute;z-index:1;left:50%;top:57%;width:min(108svh,980px);height:auto;object-fit:contain;opacity:var(--spoon-opacity);transform:translate(-50%,calc(-50% + var(--spoon-rise))) rotate(-90deg) scale(var(--spoon-scale));transform-origin:center;will-change:transform,opacity}
 .storyBowl{position:absolute;z-index:1;left:var(--bowl-left);top:54%;width:min(77vw,1100px);height:min(82svh,740px);object-fit:contain;opacity:var(--bowl-opacity);transform:translate(-50%,-50%) scale(var(--bowl-scale));transform-origin:center;will-change:left,transform,opacity}
 .passionLayer .copyLead{opacity:var(--passion-lead);transform:translateY(var(--passion-lead-y));will-change:transform,opacity}
 .passionLayer .copyBody,.passionLayer .sideCopy{opacity:var(--passion-body);transform:translateY(var(--passion-body-y));will-change:transform,opacity}
@@ -127,7 +127,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
   .copy.left,.copy.right,.serviceCopy,.productIntro{position:relative;inset:auto;transform:none;width:100%;max-width:none;text-align:left;align-items:flex-start}
   .copy,.serviceCopy{gap:20px}
   .copy h2,.serviceCopy h2{font-size:42px;line-height:44px}.copy span,.serviceCopy>span,.productIntro span{font-size:34px}
-  .storySpoon{width:min(54vw,260px);height:54svh}
+  .storySpoon{top:57%;width:min(100svh,720px);height:auto}
   .storyBowl{width:105vw;height:58svh;top:58%}
   .storyLayer .copy.left,.storyLayer .copy.right{position:absolute;left:24px;right:24px;top:12svh;width:auto;text-align:left;align-items:flex-start}
   .storyLayer .copyBody{align-items:flex-start}
