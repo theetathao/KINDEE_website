@@ -16,7 +16,7 @@ section{position:relative;overflow:hidden;width:100%}
 .nav{position:fixed;z-index:50;top:40px;left:50%;transform:translateX(-50%);width:80%;height:72px;padding:4px 32px;display:grid;grid-template-columns:1fr 180px 1fr;align-items:center;border-radius:20px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);box-shadow:6px 13px 20px rgba(85,53,53,.4);transition:height .28s ease}
 .nav>.outlineBtn{justify-self:start}
 .nav>a[aria-label="Kin Dee home"]{display:grid;place-items:center;height:64px}
-.logo{display:block;width:123px;height:80px;object-fit:contain}
+.logo{display:block;width:123px;height:80px;object-fit:contain;transform:translateY(-7px)}
 .menuButton{justify-self:end;width:40px;height:40px;padding:0;border:0;background:transparent;cursor:pointer}
 .menuButton img{display:block;width:40px;height:40px}
 .navOpen{height:min(650px,calc(100svh - 80px));grid-template-rows:80px minmax(0,1fr);align-content:start;padding:4px 32px 40px}
