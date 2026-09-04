@@ -1,12 +1,76 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const A = '/assets/';
 function Arrow() { return <span aria-hidden="true">→</span>; }
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const storyRef = useRef<HTMLElement>(null);
+  const storyStageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = storyRef.current;
+    const stage = storyStageRef.current;
+    if (!section || !stage) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    stage.dataset.reducedMotion = String(reduceMotion);
+    let frame = 0;
+    const clamp = (value: number) => Math.min(1, Math.max(0, value));
+    const ease = (value: number) => {
+      const t = clamp(value);
+      return t * t * (3 - 2 * t);
+    };
+    const phase = (progress: number, start: number, end: number) => ease((progress - start) / (end - start));
+    const set = (name: string, value: string | number) => stage.style.setProperty(name, String(value));
+
+    const update = () => {
+      const rect = section.getBoundingClientRect();
+      const distance = Math.max(1, section.offsetHeight - window.innerHeight);
+      const progress = clamp(-rect.top / distance);
+      const spoonIn = phase(progress, 0.01, 0.12);
+      const firstFade = 1 - phase(progress, 0.36, 0.44);
+      const spoonMorph = phase(progress, 0.42, 0.60);
+      const spoonOut = 1 - phase(progress, 0.55, 0.66);
+      const bowlIn = phase(progress, 0.50, 0.68);
+      const passionLead = phase(progress, 0.12, 0.20) * firstFade;
+      const passionBody = phase(progress, 0.17, 0.25) * firstFade;
+      const passionNote = phase(progress, 0.25, 0.32) * firstFade;
+      const tasteLead = phase(progress, 0.68, 0.77);
+      const tasteBody = phase(progress, 0.74, 0.83);
+      const tasteNote = phase(progress, 0.84, 0.92);
+
+      set('--spoon-opacity', spoonIn * spoonOut);
+      set('--spoon-rise', `${(1 - spoonIn) * 58}svh`);
+      set('--spoon-scale', 1 - spoonMorph * 0.58);
+      set('--bowl-opacity', bowlIn);
+      set('--bowl-scale', 0.45 + bowlIn * 0.55);
+      set('--bowl-left', `${50 - bowlIn * 22}%`);
+      set('--passion-lead', passionLead);
+      set('--passion-lead-y', `${(1 - phase(progress, 0.12, 0.20)) * 42}px`);
+      set('--passion-body', passionBody);
+      set('--passion-body-y', `${(1 - phase(progress, 0.17, 0.25)) * 42}px`);
+      set('--passion-note', passionNote);
+      set('--taste-lead', tasteLead);
+      set('--taste-lead-y', `${(1 - tasteLead) * 42}px`);
+      set('--taste-body', tasteBody);
+      set('--taste-body-y', `${(1 - tasteBody) * 42}px`);
+      set('--taste-note', tasteNote);
+      frame = 0;
+    };
+    const requestUpdate = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    return () => {
+      window.removeEventListener('scroll', requestUpdate);
+      window.removeEventListener('resize', requestUpdate);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
     <main>
       <section className="hero" id="home">
@@ -35,15 +99,26 @@ export default function Home() {
         </header>
         <div className="heroCopy"><h1>Bringing the best of Southeast Asia to your table</h1><a href="#about" aria-label="Continue"><img src={`${A}down.svg`} alt="" /></a></div>
       </section>
-      <section className="story passion" id="about">
-        <div className="copy left"><span>01.</span><h2>Passion in<br/>every bite</h2><p>In Thai, “Kin Dee” means Eat Well — a phrase that reflects our passion for quality, flavor, health, and care in every bite.</p></div>
-        <img className="spoon" src={`${A}spoon.png`} alt="Thai curry served on a white spoon" />
-        <p className="sideCopy">It captures our commitment to providing premium Asian food products that deliver the authentic tastes and culinary heritage of Asia.</p>
-        <em className="note perfect">Perfect bite :)</em>
-      </section>
-      <section className="story taste">
-        <img className="bowl" src={`${A}bowl.png`} alt="A bowl of green curry" /><em className="note authentic">Authentic Taste</em>
-        <div className="copy right"><span>02.</span><h2>It begins<br/>with a taste.</h2><p>Bringing the authentic flavors and culinary heritage of Southeast Asia to every table.</p><a className="goldBtn" href="#products">Explore Now <Arrow /></a></div>
+      <section className="storySequence" id="about" ref={storyRef} aria-label="Our food story">
+        <div className="storyStage" ref={storyStageRef}>
+          <img className="storySpoon" src={`${A}spoon.png`} alt="Thai curry served on a white spoon" />
+          <img className="storyBowl" src={`${A}bowl.png`} alt="A bowl of green curry" />
+          <div className="storyLayer passionLayer">
+            <div className="copy left">
+              <div className="copyLead"><span>01.</span><h2>Passion in<br/>every bite</h2></div>
+              <div className="copyBody"><p>In Thai, “Kin Dee” means Eat Well — a phrase that reflects our passion for quality, flavor, health, and care in every bite.</p></div>
+            </div>
+            <p className="sideCopy">It captures our commitment to providing premium Asian food products that deliver the authentic tastes and culinary heritage of Asia.</p>
+            <em className="note perfect">Perfect bite :)</em>
+          </div>
+          <div className="storyLayer tasteLayer">
+            <em className="note authentic"><span aria-hidden="true">↶</span> Authentic Taste</em>
+            <div className="copy right">
+              <div className="copyLead"><span>02.</span><h2>It begins<br/>with a taste.</h2></div>
+              <div className="copyBody"><p>Bringing the authentic flavors and culinary heritage of Southeast Asia to every table.</p><a className="goldBtn" href="#products">Explore Now <Arrow /></a></div>
+            </div>
+          </div>
+        </div>
       </section>
       <section className="products" id="products">
         <div className="productIntro"><span>03.</span><h2>Feature Products</h2><p>From sauces and condiments to coconut milk, rice and ready-to-cook essentials, Kin Dee brings together a wide range of Southeast Asian food products.</p></div>

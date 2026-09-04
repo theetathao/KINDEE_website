@@ -35,19 +35,29 @@ section{position:relative;overflow:hidden;width:100%}
 .heroCopy h1{width:620px;max-width:78vw;margin:0 0 clamp(24px,4svh,40px);font:500 56px/60px 'Cormorant Garamond';letter-spacing:-.56px;text-transform:uppercase}
 .heroCopy img{display:block;width:40px;height:40px}
 
-.story{height:100svh;background:var(--cream)}
+.storySequence{height:600svh;background:var(--cream)}
+.storyStage{position:sticky;top:0;width:100%;height:100svh;overflow:hidden;background:var(--cream);--spoon-opacity:0;--spoon-rise:58svh;--spoon-scale:1;--bowl-opacity:0;--bowl-scale:.45;--bowl-left:50%;--passion-lead:0;--passion-lead-y:42px;--passion-body:0;--passion-body-y:42px;--passion-note:0;--taste-lead:0;--taste-lead-y:42px;--taste-body:0;--taste-body-y:42px;--taste-note:0}
+.storyLayer{position:absolute;inset:0;z-index:2;pointer-events:none}
+.storyLayer a{pointer-events:auto}
 .copy{display:flex;flex-direction:column;gap:clamp(20px,4svh,40px);z-index:2}
+.copyLead,.copyBody{display:flex;flex-direction:column;gap:clamp(16px,2.5svh,28px)}
 .copy span,.serviceCopy>span,.productIntro span{font:700 48px/52px 'Cormorant Garamond';color:var(--red)}
 .copy h2,.serviceCopy h2{margin:0;font:700 56px/60px 'Cormorant Garamond';letter-spacing:-.56px}
 .copy p,.serviceCopy p{margin:0;font-size:18px;line-height:28px}
 .copy.left{position:absolute;left:8.47%;top:clamp(64px,14svh,125px);width:306px}
-.spoon{position:absolute;left:39.6%;top:clamp(40px,10svh,108px);width:300px;height:min(78svh,703px);object-fit:contain}
+.storySpoon{position:absolute;z-index:1;left:50%;top:50%;width:min(300px,28vw);height:min(78svh,703px);object-fit:contain;opacity:var(--spoon-opacity);transform:translate(-50%,calc(-50% + var(--spoon-rise))) scale(var(--spoon-scale));transform-origin:center;will-change:transform,opacity}
+.storyBowl{position:absolute;z-index:1;left:var(--bowl-left);top:54%;width:min(77vw,1100px);height:min(82svh,740px);object-fit:contain;opacity:var(--bowl-opacity);transform:translate(-50%,-50%) scale(var(--bowl-scale));transform-origin:center;will-change:left,transform,opacity}
+.passionLayer .copyLead{opacity:var(--passion-lead);transform:translateY(var(--passion-lead-y));will-change:transform,opacity}
+.passionLayer .copyBody,.passionLayer .sideCopy{opacity:var(--passion-body);transform:translateY(var(--passion-body-y));will-change:transform,opacity}
 .sideCopy{position:absolute;right:8.2%;bottom:clamp(48px,10svh,97px);width:311px;margin:0;text-align:right;font-size:18px;line-height:28px}
 .note{font:700 42px/44px 'Caveat';color:var(--gray)}
-.perfect{position:absolute;right:25.3%;top:420px;transform:rotate(-6.2deg)}
-.bowl{position:absolute;left:-7.8%;top:11px;width:77%;height:min(92svh,740px);object-fit:contain}
+.perfect{position:absolute;right:25.3%;top:58%;opacity:var(--passion-note);transform:rotate(-6.2deg);will-change:opacity}
 .copy.right{position:absolute;right:8.2%;top:clamp(64px,16svh,147px);width:368px;text-align:right;align-items:flex-end}
-.authentic{position:absolute;left:49.3%;top:34px;transform:rotate(-4deg)}
+.tasteLayer .copyLead{opacity:var(--taste-lead);transform:translateY(var(--taste-lead-y));will-change:transform,opacity}
+.tasteLayer .copyBody{align-items:flex-end;opacity:var(--taste-body);transform:translateY(var(--taste-body-y));will-change:transform,opacity}
+.authentic{position:absolute;left:41%;top:9%;opacity:var(--taste-note);transform:rotate(-4deg);will-change:opacity}
+.authentic span{display:inline-block;margin-right:10px;font-size:52px;transform:rotate(-18deg)}
+.storyStage[data-reduced-motion="true"] .storySpoon,.storyStage[data-reduced-motion="true"] .storyBowl,.storyStage[data-reduced-motion="true"] .copyLead,.storyStage[data-reduced-motion="true"] .copyBody,.storyStage[data-reduced-motion="true"] .sideCopy{transition:none;--spoon-rise:0px;--passion-lead-y:0px;--passion-body-y:0px;--taste-lead-y:0px;--taste-body-y:0px}
 
 .products{height:900px;background:linear-gradient(rgba(119,115,110,.9),rgba(119,115,110,.9)),url('/assets/products-bg.png') center/cover;color:#fff}
 .productIntro{position:absolute;z-index:2;top:61px;left:50%;transform:translateX(-50%);width:792px;max-width:80%;text-align:center}
@@ -112,12 +122,18 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
   .mainMenu a{height:clamp(54px,10svh,72px);font-size:clamp(30px,9vw,40px)}
   .heroCopy{left:24px;bottom:44px}.heroCopy h1{max-width:88vw;font-size:42px;line-height:44px}
   .products,.catalog{height:auto;min-height:720px;padding:72px 24px}
-  .story,.quality,.service{height:100svh;min-height:0;padding:clamp(32px,6svh,56px) 24px}
+  .quality,.service{height:100svh;min-height:0;padding:clamp(32px,6svh,56px) 24px}
+  .storySequence{height:600svh}.storyStage{height:100svh}
   .copy.left,.copy.right,.serviceCopy,.productIntro{position:relative;inset:auto;transform:none;width:100%;max-width:none;text-align:left;align-items:flex-start}
   .copy,.serviceCopy{gap:20px}
   .copy h2,.serviceCopy h2{font-size:42px;line-height:44px}.copy span,.serviceCopy>span,.productIntro span{font-size:34px}
-  .spoon,.bowl{position:relative;inset:auto;width:100%;height:clamp(150px,24svh,240px);object-fit:contain;margin-top:16px}
-  .sideCopy{position:relative;inset:auto;width:100%;text-align:left;font-size:15px;line-height:22px}.note,.service:after{display:none}
+  .storySpoon{width:min(54vw,260px);height:54svh}
+  .storyBowl{width:105vw;height:58svh;top:58%}
+  .storyLayer .copy.left,.storyLayer .copy.right{position:absolute;left:24px;right:24px;top:12svh;width:auto;text-align:left;align-items:flex-start}
+  .storyLayer .copyBody{align-items:flex-start}
+  .sideCopy{position:absolute;left:24px;right:24px;bottom:7svh;width:auto;text-align:left;font-size:15px;line-height:22px}
+  .perfect{right:10%;top:61%}.authentic{left:22px;top:7%;font-size:28px}.authentic span{font-size:36px}
+  .service:after{display:none}
   .productHero{position:relative;inset:auto;transform:none;width:100%;height:260px;margin-top:40px}
   .productCard{position:relative;inset:auto;width:100%;margin-top:20px}
   .categoryArea{position:relative;inset:auto;margin-top:28px}.categories{display:flex;overflow:auto;gap:12px}.categoryCard{min-width:170px}
