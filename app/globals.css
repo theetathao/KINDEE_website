@@ -31,22 +31,22 @@ section{position:relative;overflow:hidden;width:100%}
 .mainMenu a{display:flex;align-items:center;justify-content:flex-end;height:62px;border-bottom:1px solid rgba(216,212,204,.45);font:400 40px/52px 'Cormorant Garamond';letter-spacing:.4px;text-transform:uppercase}
 .mainMenu a:last-child{border:0}
 .mainMenu a.active{color:var(--gold);font-weight:700}
-.heroCopy{position:absolute;left:8.35%;bottom:80px;color:#fff}
-.heroCopy h1{width:695px;max-width:78vw;margin:0 0 40px;font:500 72px/76px 'Cormorant Garamond';letter-spacing:-.72px;text-transform:uppercase}
+.heroCopy{position:absolute;left:8.35%;bottom:clamp(40px,8svh,80px);color:#fff}
+.heroCopy h1{width:620px;max-width:78vw;margin:0 0 clamp(24px,4svh,40px);font:500 56px/60px 'Cormorant Garamond';letter-spacing:-.56px;text-transform:uppercase}
 .heroCopy img{display:block;width:40px;height:40px}
 
 .story{height:100svh;background:var(--cream)}
-.copy{display:flex;flex-direction:column;gap:40px;z-index:2}
+.copy{display:flex;flex-direction:column;gap:clamp(20px,4svh,40px);z-index:2}
 .copy span,.serviceCopy>span,.productIntro span{font:700 48px/52px 'Cormorant Garamond';color:var(--red)}
-.copy h2,.serviceCopy h2{margin:0;font:700 72px/76px 'Cormorant Garamond';letter-spacing:-.72px}
+.copy h2,.serviceCopy h2{margin:0;font:700 56px/60px 'Cormorant Garamond';letter-spacing:-.56px}
 .copy p,.serviceCopy p{margin:0;font-size:18px;line-height:28px}
-.copy.left{position:absolute;left:8.47%;top:125px;width:306px}
-.spoon{position:absolute;left:39.6%;top:108px;width:300px;height:703px;object-fit:cover}
-.sideCopy{position:absolute;right:8.2%;bottom:97px;width:311px;margin:0;text-align:right;font-size:18px;line-height:28px}
+.copy.left{position:absolute;left:8.47%;top:clamp(64px,14svh,125px);width:306px}
+.spoon{position:absolute;left:39.6%;top:clamp(40px,10svh,108px);width:300px;height:min(78svh,703px);object-fit:contain}
+.sideCopy{position:absolute;right:8.2%;bottom:clamp(48px,10svh,97px);width:311px;margin:0;text-align:right;font-size:18px;line-height:28px}
 .note{font:700 42px/44px 'Caveat';color:var(--gray)}
 .perfect{position:absolute;right:25.3%;top:420px;transform:rotate(-6.2deg)}
-.bowl{position:absolute;left:-7.8%;top:11px;width:77%;height:740px;object-fit:cover}
-.copy.right{position:absolute;right:8.2%;top:147px;width:368px;text-align:right;align-items:flex-end}
+.bowl{position:absolute;left:-7.8%;top:11px;width:77%;height:min(92svh,740px);object-fit:contain}
+.copy.right{position:absolute;right:8.2%;top:clamp(64px,16svh,147px);width:368px;text-align:right;align-items:flex-end}
 .authentic{position:absolute;left:49.3%;top:34px;transform:rotate(-4deg)}
 
 .products{height:900px;background:linear-gradient(rgba(119,115,110,.9),rgba(119,115,110,.9)),url('/assets/products-bg.png') center/cover;color:#fff}
@@ -69,15 +69,15 @@ section{position:relative;overflow:hidden;width:100%}
 
 .quality{height:100svh;background:var(--taupe)}
 .copy.light{color:var(--cream)}
-.quality .copy{top:133px;width:586px}
-.quality>img{position:absolute;right:1.5%;top:45px;width:48%;height:650px;object-fit:contain}
+.quality .copy{top:clamp(64px,14svh,133px);width:510px}
+.quality>img{position:absolute;right:1.5%;top:clamp(24px,5svh,45px);width:48%;height:min(86svh,650px);object-fit:contain}
 .selected{position:absolute;right:28.2%;bottom:114px;color:var(--cream)}
 
 .service{height:100svh;background:linear-gradient(90deg,transparent,rgba(37,37,37,.8)),url('/assets/farm.png') center/cover;color:#fff}
-.serviceCopy{position:absolute;right:8.2%;top:117px;width:487px;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:40px}
+.serviceCopy{position:absolute;right:8.2%;top:clamp(56px,12svh,117px);width:487px;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:clamp(20px,3svh,32px)}
 .serviceCopy>span{color:var(--gold)}
 .serviceCopy h2{margin:0}
-.values{position:absolute;left:50%;bottom:100px;transform:translateX(-50%);width:83.5%;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:20px;border:1px solid var(--gold);border-radius:16px;background:rgba(0,0,0,.4);backdrop-filter:blur(10px)}
+.values{position:absolute;left:50%;bottom:clamp(28px,8svh,100px);transform:translateX(-50%);width:83.5%;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:20px;border:1px solid var(--gold);border-radius:16px;background:rgba(0,0,0,.4);backdrop-filter:blur(10px)}
 .values article{display:flex;gap:20px}
 .values img{width:40px;height:40px}
 .values h3{margin:0 0 8px;font:700 28px/34px 'Cormorant Garamond'}
@@ -110,18 +110,19 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
   .navOpen{height:calc(100svh - 36px);padding:8px 18px 28px;grid-template-rows:64px minmax(0,1fr)}
   .menuPanel{grid-template-columns:1fr;gap:0}.productMenu,.menuDivider{display:none}
   .mainMenu a{height:clamp(54px,10svh,72px);font-size:clamp(30px,9vw,40px)}
-  .heroCopy{left:24px;bottom:44px}.heroCopy h1{max-width:88vw;font-size:44px;line-height:46px}
+  .heroCopy{left:24px;bottom:44px}.heroCopy h1{max-width:88vw;font-size:42px;line-height:44px}
   .products,.catalog{height:auto;min-height:720px;padding:72px 24px}
-  .story,.quality,.service{height:100svh;min-height:0;padding:72px 24px}
+  .story,.quality,.service{height:100svh;min-height:0;padding:clamp(32px,6svh,56px) 24px}
   .copy.left,.copy.right,.serviceCopy,.productIntro{position:relative;inset:auto;transform:none;width:100%;max-width:none;text-align:left;align-items:flex-start}
-  .copy h2,.serviceCopy h2{font-size:48px;line-height:50px}.copy span,.serviceCopy>span,.productIntro span{font-size:36px}
-  .spoon,.bowl{position:relative;inset:auto;width:100%;height:330px;object-fit:contain;margin-top:24px}
-  .sideCopy{position:relative;inset:auto;width:100%;text-align:left}.note,.service:after{display:none}
+  .copy,.serviceCopy{gap:20px}
+  .copy h2,.serviceCopy h2{font-size:42px;line-height:44px}.copy span,.serviceCopy>span,.productIntro span{font-size:34px}
+  .spoon,.bowl{position:relative;inset:auto;width:100%;height:clamp(150px,24svh,240px);object-fit:contain;margin-top:16px}
+  .sideCopy{position:relative;inset:auto;width:100%;text-align:left;font-size:15px;line-height:22px}.note,.service:after{display:none}
   .productHero{position:relative;inset:auto;transform:none;width:100%;height:260px;margin-top:40px}
   .productCard{position:relative;inset:auto;width:100%;margin-top:20px}
   .categoryArea{position:relative;inset:auto;margin-top:28px}.categories{display:flex;overflow:auto;gap:12px}.categoryCard{min-width:170px}
-  .quality .copy{position:relative;inset:auto;width:100%}.quality>img{position:relative;inset:auto;width:100%;height:300px}
-  .values{position:relative;inset:auto;transform:none;width:100%;grid-template-columns:1fr;margin-top:60px}
+  .quality .copy{position:relative;inset:auto;width:100%}.quality>img{position:relative;inset:auto;width:100%;height:clamp(150px,24svh,240px)}
+  .values{position:relative;inset:auto;transform:none;width:100%;grid-template-columns:1fr;margin-top:24px;gap:12px;padding:14px}
   .catalog .copy{position:relative;inset:auto;width:100%}.catalog>img{position:relative;inset:auto;width:100%;height:300px;transform:none}
   footer{height:auto;padding:60px 24px 30px}.footerMain{height:auto;align-items:flex-start;gap:48px;flex-direction:column}
   .sealGrid{width:100%;height:auto;grid-template-columns:repeat(5,1fr);grid-template-rows:auto;gap:14px}
