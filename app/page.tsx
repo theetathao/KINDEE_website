@@ -10,11 +10,28 @@ export default function Home() {
   return (
     <main>
       <section className="hero" id="home">
-        <header className="nav">
+        <header className={`nav ${menuOpen ? 'navOpen' : ''}`}>
           <a className="outlineBtn" href="#catalog">Download Catalog</a>
           <a href="#home" aria-label="Kin Dee home"><img className="logo" src={`${A}logo.png`} alt="Kin Dee" /></a>
-          <button className="menuButton" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle navigation"><img src={`${A}menu.svg`} alt="" /></button>
-          {menuOpen && <nav className="menu"><a href="#about">About</a><a href="#products">Products</a><a href="#quality">Quality</a><a href="#service">Services</a><a href="#catalog">Catalog</a></nav>}
+          <button className="menuButton" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}><img src={`${A}${menuOpen ? 'close.svg' : 'menu.svg'}`} alt="" /></button>
+          {menuOpen && (
+            <div className="menuPanel">
+              <div className="productMenu">
+                <h2>Explore Products</h2>
+                {['Honey','Condiments','Ready to cook','Snacks','Coconut milk','Rice','Dried Fruits','Beverages','Frozen Foods','Accessory Items'].map(item => <a href="#products" onClick={() => setMenuOpen(false)} key={item}>{item}</a>)}
+                <a className="viewAll" href="#products" onClick={() => setMenuOpen(false)}>View all <img src={`${A}arrow-right.svg`} alt="" /></a>
+              </div>
+              <span className="menuDivider" aria-hidden="true" />
+              <nav className="mainMenu" aria-label="Main navigation">
+                <a className="active" href="#home" onClick={() => setMenuOpen(false)}>Home</a>
+                <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+                <a href="#products" onClick={() => setMenuOpen(false)}>Product</a>
+                <a href="#service" onClick={() => setMenuOpen(false)}>Services</a>
+                <a href="#" onClick={() => setMenuOpen(false)}>Recipes</a>
+                <a href="#" onClick={() => setMenuOpen(false)}>Contact</a>
+              </nav>
+            </div>
+          )}
         </header>
         <div className="heroCopy"><h1>Bringing the best of Southeast Asia to your table</h1><a href="#about" aria-label="Continue"><img src={`${A}down.svg`} alt="" /></a></div>
       </section>
