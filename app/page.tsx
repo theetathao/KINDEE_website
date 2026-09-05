@@ -30,14 +30,14 @@ export default function Home() {
       const rect = section.getBoundingClientRect();
       const distance = Math.max(1, section.offsetHeight - window.innerHeight);
       const progress = clamp(-rect.top / distance);
-      const spoonIn = phase(progress, 0.005, 0.07);
+      const spoonIn = phase(progress, 0.002, 0.045);
       const firstFade = 1 - phase(progress, 0.34, 0.44);
       const spoonMorph = phase(progress, 0.42, 0.60);
       const spoonOut = 1 - phase(progress, 0.55, 0.66);
       const bowlIn = phase(progress, 0.50, 0.68);
-      const passionLead = phase(progress, 0.05, 0.11) * firstFade;
-      const passionBody = phase(progress, 0.08, 0.15) * firstFade;
-      const passionNote = phase(progress, 0.14, 0.20) * firstFade;
+      const passionLead = phase(progress, 0.018, 0.055) * firstFade;
+      const passionBody = phase(progress, 0.035, 0.078) * firstFade;
+      const passionNote = phase(progress, 0.065, 0.11) * firstFade;
       const tasteLead = phase(progress, 0.68, 0.77);
       const tasteBody = phase(progress, 0.74, 0.83);
       const tasteNote = phase(progress, 0.84, 0.92);
@@ -49,9 +49,9 @@ export default function Home() {
       set('--bowl-scale', 0.45 + bowlIn * 0.55);
       set('--bowl-left', `${50 - bowlIn * 22}%`);
       set('--passion-lead', passionLead);
-      set('--passion-lead-y', `${(1 - phase(progress, 0.05, 0.11)) * 42}px`);
+      set('--passion-lead-y', `${(1 - phase(progress, 0.018, 0.055)) * 42}px`);
       set('--passion-body', passionBody);
-      set('--passion-body-y', `${(1 - phase(progress, 0.08, 0.15)) * 42}px`);
+      set('--passion-body-y', `${(1 - phase(progress, 0.035, 0.078)) * 42}px`);
       set('--passion-note', passionNote);
       set('--taste-lead', tasteLead);
       set('--taste-lead-y', `${(1 - tasteLead) * 42}px`);
@@ -114,7 +114,7 @@ export default function Home() {
             </div>
           )}
         </header>
-        <div className="heroCopy" data-reveal><h1>Bringing the best of Southeast Asia to your table</h1><a href="#about" aria-label="Continue"><img src={`${A}down.svg`} alt="" /></a></div>
+        <div className="heroCopy" data-reveal><h1>Bringing the best of Southeast Asia to your table</h1><a className="scrollCue" href="#about" aria-label="Scroll down to our story"><img src={`${A}down.svg`} alt="" /></a></div>
       </section>
       <section className="storySequence" id="about" ref={storyRef} aria-label="Our food story">
         <div className="storyStage" ref={storyStageRef}>
