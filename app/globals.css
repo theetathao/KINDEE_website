@@ -58,7 +58,7 @@ section{position:relative;overflow:hidden;width:100%}
 .tasteLayer .copyLead{opacity:var(--taste-lead);transform:translateY(var(--taste-lead-y));transition:transform .2s cubic-bezier(.22,.61,.36,1),opacity .2s ease;will-change:transform,opacity}
 .tasteLayer .copyBody{align-items:flex-end;opacity:var(--taste-body);transform:translateY(var(--taste-body-y));transition:transform .2s cubic-bezier(.22,.61,.36,1),opacity .2s ease;will-change:transform,opacity}
 .tasteLayer .goldBtn,.tasteLayer .goldBtn span{color:var(--dark)}
-.authentic{position:absolute;left:50.5%;top:76%;display:flex;width:343px;height:60px;align-items:center;gap:16px;opacity:var(--taste-note);will-change:opacity}
+.authentic{position:absolute;left:44%;top:82%;display:flex;width:343px;height:60px;align-items:center;gap:16px;opacity:var(--taste-note);transform:scale(.7);transform-origin:left top;will-change:opacity,transform}
 .handArrow{display:block;flex:0 0 95px;width:95px;height:53px}
 .handArrow img{display:block;width:100%;height:100%;object-fit:contain;transform:scaleY(-1) rotate(-4.01deg)}
 .handText{display:block;white-space:nowrap;transform:rotate(4.01deg)}
@@ -144,7 +144,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
   .storyLayer .copy.left,.storyLayer .copy.right{position:absolute;left:24px;right:24px;top:112px;width:auto;text-align:left;align-items:flex-start}
   .storyLayer .copyBody{align-items:flex-start}
   .sideCopy{position:absolute;left:24px;right:24px;bottom:7svh;width:auto;text-align:left;font-size:15px;line-height:22px}
-  .perfect{right:10%;top:66%}.authentic{left:42%;top:78%;width:270px;height:44px;gap:8px;font-size:28px}.handArrow{flex-basis:74px;width:74px;height:42px}
+  .perfect{right:10%;top:66%}.authentic{left:32%;top:82%;width:270px;height:44px;gap:8px;font-size:28px}.handArrow{flex-basis:74px;width:74px;height:42px}
   .service:after{display:none}
   .productHero{position:relative;inset:auto;transform:none;width:100%;height:260px;margin-top:40px}
   .productCard{position:relative;inset:auto;width:100%;margin-top:20px}
