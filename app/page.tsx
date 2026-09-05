@@ -105,7 +105,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const items = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+    const items = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal], [data-ingredient-reveal]'));
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       items.forEach(item => item.classList.add('is-visible'));
       return;
@@ -188,7 +188,14 @@ export default function Home() {
       </section>
       <section className="quality" id="quality">
         <div className="copy left light"><div className="sectionHeadingReveal" data-reveal><span>04.</span><h2>Quality Starts<br/>With What Goes In.</h2></div><p className="revealDelay1" data-reveal>We carefully select ingredients and maintain high standards of food quality and safety — because great flavor begins long before it reaches the table.</p><a className="goldBtn revealDelay2" data-reveal href="#service">Learn more <Arrow /></a></div>
-        <img className="revealDelay1" data-reveal src={`${A}ingredients.png`} alt="Fresh lime, garlic, chili and herbs" /><em className="note selected revealDelay2" data-reveal>carefully selected ↑</em>
+        <div className="ingredientArt" data-ingredient-reveal aria-label="Fresh lime, garlic, red chili and basil">
+          {[
+            ['ingredientLime','Fresh lime'],
+            ['ingredientChili','Fresh red chili'],
+            ['ingredientGarlic','Fresh garlic'],
+            ['ingredientBasil','Fresh basil'],
+          ].map(([className,label]) => <span className={`ingredient ${className}`} role="img" aria-label={label} tabIndex={0} key={className}><span className="ingredientFocus"><span className="ingredientFloat"><img src={`${A}ingredients.png`} alt="" /></span></span></span>)}
+        </div><em className="note selected revealDelay2" data-reveal>carefully selected ↑</em>
       </section>
       <section className="service" id="service">
         <div className="serviceCopy"><div className="sectionHeadingReveal" data-reveal><span>05.</span><h2>Every Bite<br/>Tells a Story.</h2></div><p className="revealDelay1" data-reveal>We believe in protecting the environment for future generations by partnering with suppliers who practice sustainable farming.</p><a className="outlineBtn revealDelay2" data-reveal href="#catalog">Our Service <Arrow /></a></div>
