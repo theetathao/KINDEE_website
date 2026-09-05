@@ -203,7 +203,7 @@ export default function Home() {
             ['ingredientChili','Chili','chili.png'],
             ['ingredientGarlic','Garlic','garlic.png'],
             ['ingredientBasil','Thai Basil','basil.png'],
-          ].map(([className,label,file]) => <span className={`ingredient ${className}`} role="img" aria-label={label} tabIndex={0} key={className}><span className="ingredientFocus"><span className="ingredientFloat"><img src={`${A}ingredients-v2/${file}`} alt="" /></span></span><span className="ingredientLabel"><span>{label}</span><img src={`${A}handwriting-arrow.svg`} alt="" /></span></span>)}
+          ].map(([className,label,file]) => <span className={`ingredient ${className}`} role="img" aria-label={label} tabIndex={0} key={className}><span className="ingredientFocus"><span className="ingredientFloat"><img src={`${A}ingredients-v2/${file}`} alt="" /></span></span><span className="ingredientLabel"><span>{label}</span></span></span>)}
         </div><em className="note selected revealDelay2" data-reveal>carefully selected ↑</em>
       </section>
       <section className="service" id="service">

@@ -104,15 +104,15 @@ section{position:relative;overflow:hidden;width:100%}
 .copy.light{color:var(--cream)}
 .quality .copy{top:clamp(150px,20svh,230px);width:510px;gap:clamp(28px,4.5svh,56px)}
 .quality .sectionHeadingReveal{gap:clamp(24px,4svh,48px)}
-.ingredientArt{position:absolute;right:3%;top:10svh;width:50%;height:76svh}
+.ingredientArt{position:absolute;right:3%;top:6svh;width:50%;height:76svh}
 .ingredient{position:absolute;display:block;opacity:0;cursor:default;will-change:transform,opacity;z-index:1}
 .ingredientFocus,.ingredientFloat{position:absolute;inset:0;display:block;will-change:transform,opacity}
 .ingredientFocus{filter:drop-shadow(8px 14px 12px rgba(56,42,29,.22));transition:opacity .65s ease,transform .65s cubic-bezier(.22,.61,.36,1)}
 .ingredient img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
-.ingredientLime{left:7%;top:9%;width:34%;height:34%;--delay:0s;--floatY:-4px;--floatRot:.7deg;--floatDur:5.4s}
-.ingredientChili{left:2%;bottom:5%;width:45%;height:46%;--delay:.18s;--floatY:-5px;--floatRot:1deg;--floatDur:4.9s}
-.ingredientGarlic{right:2%;top:1%;width:36%;height:39%;--delay:.36s;--floatY:-3px;--floatRot:-.6deg;--floatDur:5.8s}
-.ingredientBasil{right:0;bottom:0;width:41%;height:47%;--delay:.54s;--floatY:-4px;--floatRot:-1deg;--floatDur:6.2s}
+.ingredientLime{left:18%;top:20%;width:34%;height:34%;--delay:0s;--floatY:-4px;--floatRot:.7deg;--floatDur:5.4s}
+.ingredientChili{left:4%;bottom:5%;width:45%;height:46%;--delay:.18s;--floatY:-5px;--floatRot:1deg;--floatDur:4.9s}
+.ingredientGarlic{right:18%;top:0;width:36%;height:39%;--delay:.36s;--floatY:-3px;--floatRot:-.6deg;--floatDur:5.8s}
+.ingredientBasil{right:8%;bottom:4%;width:41%;height:47%;--delay:.54s;--floatY:-4px;--floatRot:-1deg;--floatDur:6.2s}
 .ingredientArt.is-visible .ingredient{animation:ingredientEnter 1.25s cubic-bezier(.16,1,.3,1) var(--delay) both}
 .ingredientArt.is-visible .ingredientFloat{animation:ingredientFloat var(--floatDur) ease-in-out calc(1.35s + var(--delay)) infinite alternate}
 .ingredient:focus-visible{outline:2px solid rgba(245,240,230,.75);outline-offset:-12px}
@@ -121,13 +121,12 @@ section{position:relative;overflow:hidden;width:100%}
 .ingredientArt:has(.ingredient:is(:hover,:focus-visible)) .ingredient:is(:hover,:focus-visible) .ingredientFocus{opacity:1;transform:scale(1.065) rotate(1.5deg)}
 .ingredientArt:has(.ingredient:is(:hover,:focus-visible)) + .selected{opacity:1;filter:drop-shadow(0 4px 8px rgba(56,42,29,.22));transform:translateY(-2px)}
 .ingredientLabel{position:absolute;z-index:5;display:flex;align-items:center;gap:7px;color:var(--cream);font:700 27px/30px 'Caveat';white-space:nowrap;opacity:0;transform:translateY(10px);transition:opacity .4s ease,transform .5s cubic-bezier(.22,.61,.36,1);pointer-events:none}
-.ingredientLabel img{width:55px;height:32px;object-fit:contain}
 .ingredient:is(:hover,:focus-visible) .ingredientLabel{opacity:1;transform:translateY(0)}
-.ingredientLime .ingredientLabel{left:82%;bottom:4%}.ingredientLime .ingredientLabel img{transform:rotate(155deg)}
-.ingredientChili .ingredientLabel{left:82%;top:44%}.ingredientChili .ingredientLabel img{transform:rotate(165deg)}
-.ingredientGarlic .ingredientLabel{right:78%;bottom:4%;flex-direction:row-reverse}.ingredientGarlic .ingredientLabel img{transform:rotate(-8deg)}
-.ingredientBasil .ingredientLabel{right:76%;top:48%;flex-direction:row-reverse}.ingredientBasil .ingredientLabel img{transform:rotate(5deg)}
-.selected{position:absolute;right:27%;bottom:13svh;color:var(--cream)}
+.ingredientLime .ingredientLabel{left:84%;bottom:8%}
+.ingredientChili .ingredientLabel{left:82%;top:44%}
+.ingredientGarlic .ingredientLabel{right:82%;bottom:8%}
+.ingredientBasil .ingredientLabel{right:82%;top:48%}
+.selected{position:absolute;right:27%;bottom:13svh;color:var(--cream);font-size:29px;line-height:31px}
 
 .service{height:100svh;background:linear-gradient(90deg,transparent,rgba(37,37,37,.8)),url('/assets/farm.png') center/cover;color:#fff}
 .serviceCopy{position:absolute;right:8.2%;top:clamp(150px,18svh,220px);width:487px;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:clamp(28px,4svh,48px)}
