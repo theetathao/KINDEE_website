@@ -128,17 +128,23 @@ section{position:relative;overflow:hidden;width:100%}
 .ingredientBasil .ingredientLabel{right:82%;top:48%}
 .selected{position:absolute;right:27%;bottom:13svh;color:var(--cream);font-size:29px;line-height:31px}
 
-.service{height:100svh;background:linear-gradient(90deg,transparent,rgba(37,37,37,.8)),url('/assets/farm.png') center/cover;color:#fff}
-.serviceCopy{position:absolute;right:8.2%;top:clamp(150px,18svh,220px);width:487px;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:clamp(28px,4svh,48px)}
+.service{isolation:isolate;height:100svh;background:url('/assets/farm.png') 3% 92%/160% auto no-repeat;color:#fff}
+.service:before{content:'';position:absolute;z-index:0;inset:0;background:linear-gradient(90deg,rgba(16,15,11,.22) 0%,rgba(18,17,13,.29) 44%,rgba(20,20,18,.78) 100%),rgba(8,8,6,.18)}
+.service>*{z-index:1}
+.serviceCopy{position:absolute;right:8.2%;top:clamp(132px,17.5svh,210px);width:487px;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:clamp(28px,4svh,48px)}
 .serviceCopy .sectionHeadingReveal{gap:clamp(24px,3.5svh,42px)}
 .serviceCopy>span{color:var(--gold)}
 .serviceCopy h2{margin:0}
-.values{position:absolute;left:50%;bottom:clamp(40px,7.5svh,108px);transform:translateX(-50%);width:83.5%;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:20px;border:1px solid var(--gold);border-radius:16px;background:rgba(0,0,0,.4);backdrop-filter:blur(10px)}
+.serviceCopy p{max-width:470px}
+.serviceCopy .outlineBtn{padding:10px 24px;background:rgba(20,20,18,.16)}
+.values{position:absolute;left:50%;bottom:clamp(40px,7.5svh,108px);transform:translateX(-50%);width:83.5%;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:20px;border:1px solid var(--gold);border-radius:16px;background:rgba(8,8,6,.68);backdrop-filter:blur(10px)}
 .values article{display:flex;gap:20px}
 .values img{width:40px;height:40px}
 .values h3{margin:0 0 8px;font:700 28px/34px 'Cormorant Garamond'}
 .values p{margin:0;font-size:16px;line-height:24px}
-.service:after{content:'It all begins here';position:absolute;left:32%;top:18svh;color:var(--line);font:700 42px/44px 'Caveat';transform:rotate(7.5deg)}
+.serviceNote{position:absolute;left:32%;top:17.5svh;display:flex;align-items:flex-start;color:var(--line);font:700 42px/44px 'Caveat';transform:rotate(7.5deg)}
+.serviceNote span{white-space:nowrap}
+.serviceNote img{width:70px;height:54px;margin:38px 0 0 2px;object-fit:contain;transform:rotate(112deg)}
 
 .catalog{height:560px;background:var(--gray)}
 .catalog .copy{top:83px;width:484px;gap:32px}
@@ -243,7 +249,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
   .storyLayer .copyBody{align-items:flex-start}
   .sideCopy{position:absolute;left:24px;right:24px;bottom:7svh;width:auto;text-align:left;font-size:15px;line-height:22px}
   .perfect{right:10%;top:66%}.authentic{left:32%;top:82%;width:270px;height:44px;gap:8px;font-size:28px}.handArrow{flex-basis:74px;width:74px;height:42px}
-  .service:after{display:none}
+  .service{background-position:36% center;background-size:cover}.serviceNote{display:none}
   .productStage{position:relative;inset:auto;transform:none;width:100%;height:260px;margin-top:40px}
   .productInfoCard{position:relative;inset:auto;width:100%;margin-top:20px}
   .flavor{display:none}
