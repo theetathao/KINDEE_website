@@ -184,7 +184,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 .condimentCategories a:hover img{transform:scale(1.07)}
 .condimentCategories span{position:relative;z-index:1;text-align:center}
 .condimentListing{padding:0 max(24px,8.5%) 80px;overflow:visible}
-.productTools{height:80px;margin:0 calc(max(24px,8.5%) * -1) 28px;padding:20px max(24px,8.5%);display:flex;align-items:center;justify-content:space-between;background:var(--cream)}
+.productTools{width:100vw;height:80px;margin:0 calc(50% - 50vw) 28px;padding:20px max(24px,8.5vw);display:flex;align-items:center;justify-content:space-between;background:var(--cream)}
 .productSearch{width:295px;height:40px;display:flex;align-items:center;gap:6px;padding:8px 12px;background:#fff;border:2px solid #f3f3f1;border-radius:8px}
 .productSearch img{width:16px;height:16px}
 .productSearch input{width:100%;border:0;outline:0;background:transparent;font:16px/24px 'DM Sans';color:#6c6c6c}
@@ -263,7 +263,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
   .condimentHero{height:720px}.condimentPage .nav{position:absolute}
   .condimentHeroCopy{top:130px;gap:12px}.condimentHeroCopy span{font-size:34px;line-height:40px}.condimentHeroCopy h1{font-size:52px;line-height:56px}.condimentHeroCopy p{font-size:15px;line-height:22px}
   .condimentCategories{bottom:24px;width:calc(100% - 48px);display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:2px}.condimentCategories a{flex:0 0 150px;height:82px;scroll-snap-align:start}
-  .condimentListing{padding:0 24px 24px}.productTools{height:auto;margin:0 -24px 28px;padding:18px 24px;flex-direction:column;align-items:stretch;gap:12px}.productSearch{width:100%;height:50px}.filterButtons{overflow-x:auto;gap:8px}.filterButtons button{min-width:max-content;height:44px;padding:9px 12px}
+  .condimentListing{padding:0 24px 24px}.productTools{height:auto;margin:0 calc(50% - 50vw) 28px;padding:18px 24px;flex-direction:column;align-items:stretch;gap:12px}.productSearch{width:100%;height:50px}.filterButtons{overflow-x:auto;gap:8px}.filterButtons button{min-width:max-content;height:44px;padding:9px 12px}
   .condimentGrid{grid-template-columns:1fr;gap:16px}.condimentCard>div{height:330px}.condimentCard h3{min-height:0;font-size:24px;line-height:30px}
   .condimentCta{height:auto;min-height:650px;padding:56px 24px}.condimentCta>div{position:relative;inset:auto;transform:none;width:100%}.condimentCta h2{font-size:46px;line-height:48px}.condimentCta>img{position:absolute;right:-28%;top:270px;width:130%;height:410px}.condimentCta em{display:none}
 }
