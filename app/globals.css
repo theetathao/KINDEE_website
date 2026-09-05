@@ -149,6 +149,7 @@ section{position:relative;overflow:hidden;width:100%}
 .catalog{height:560px;background:var(--gray)}
 .catalog .copy{top:83px;width:484px;gap:32px}
 .catalog .copy h2{font-size:56px;line-height:60px;letter-spacing:0}
+.quality .copy h2,.serviceCopy h2,.catalog .copy h2{font-size:48px;line-height:52px;letter-spacing:-.48px}
 .catalog>img{position:absolute;right:-14%;top:-12px;width:62.6%;height:622px;object-fit:contain;transform:rotate(-2.43deg)}
 .discover{position:absolute;left:40.5%;top:69%;width:238px;color:var(--taupe);font-size:32px;line-height:32px;transform:rotate(-8.1deg)}
 
