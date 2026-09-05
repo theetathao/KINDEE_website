@@ -135,7 +135,7 @@ export default function Home() {
             <div className="menuPanel">
               <div className="productMenu">
                 <h2>Explore Products</h2>
-                {['Honey','Condiments','Ready to cook','Snacks','Coconut milk','Rice','Dried Fruits'].map(item => <a href="#products" onClick={() => setMenuOpen(false)} key={item}>{item}</a>)}
+                {['Honey','Condiments','Ready to cook','Snacks','Coconut milk','Rice','Dried Fruits'].map(item => <a href={item === 'Condiments' ? '/products/condiments' : '#products'} onClick={() => setMenuOpen(false)} key={item}>{item}</a>)}
                 <a className="viewAll" href="#products" onClick={() => setMenuOpen(false)}>View all <img src={`${A}arrow-right.svg`} alt="" /></a>
               </div>
               <span className="menuDivider" aria-hidden="true" />
@@ -184,7 +184,7 @@ export default function Home() {
         </div>
         {hoveredProduct !== null && <div className="productInfoCard" role="status" style={tooltipPosition ? { left: tooltipPosition.x, top: tooltipPosition.y } : undefined}><strong>{FEATURED_PRODUCTS[hoveredProduct].name}<br/><span>({FEATURED_PRODUCTS[hoveredProduct].detail})</span></strong><small>{FEATURED_PRODUCTS[hoveredProduct].size}</small></div>}
         <em className="note flavor revealDelay2" data-reveal>The Flavor Behind Every Dish.</em>
-        <div className="categoryArea revealDelay2" data-reveal><p>Sort by Category</p><div className="categoryCarousel"><button className="categoryNav" type="button" onClick={() => scrollCategories(-1)} aria-label="Previous categories">‹</button><div className="categories" ref={categoryTrackRef}>{PRODUCT_CATEGORIES.map(category => <button className="categoryCard" key={category.name}><img className="categoryImage" src={`${A}${category.image}`} alt=""/><span>{category.name}<b>›</b></span></button>)}</div><button className="categoryNav" type="button" onClick={() => scrollCategories(1)} aria-label="Next categories">›</button></div></div>
+        <div className="categoryArea revealDelay2" data-reveal><p>Sort by Category</p><div className="categoryCarousel"><button className="categoryNav" type="button" onClick={() => scrollCategories(-1)} aria-label="Previous categories">‹</button><div className="categories" ref={categoryTrackRef}>{PRODUCT_CATEGORIES.map(category => <a className="categoryCard" href={category.name === 'Condiments' ? '/products/condiments' : '#products'} key={category.name}><img className="categoryImage" src={`${A}${category.image}`} alt=""/><span>{category.name}<b>›</b></span></a>)}</div><button className="categoryNav" type="button" onClick={() => scrollCategories(1)} aria-label="Next categories">›</button></div></div>
       </section>
       <section className="quality" id="quality">
         <div className="copy left light"><div className="sectionHeadingReveal" data-reveal><span>04.</span><h2>Quality Starts<br/>With What Goes In.</h2></div><p className="revealDelay1" data-reveal>We carefully select ingredients and maintain high standards of food quality and safety — because great flavor begins long before it reaches the table.</p><a className="goldBtn revealDelay2" data-reveal href="#service">Learn more <Arrow /></a></div>

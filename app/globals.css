@@ -136,6 +136,54 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 .socials{display:flex;gap:16px}
 .socials img{width:32px;height:32px;object-fit:contain}
 
+/* Condiment collection */
+.condimentPage{background:#fff;color:var(--dark)}
+.condimentHero{height:640px;color:#fff;background:#222}
+.condimentHero:after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent 44%),rgba(37,37,37,.4);pointer-events:none}
+.condimentHeroImage{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.condimentPage .nav{position:absolute}
+.condimentHeroCopy{position:absolute;z-index:2;left:50%;top:192px;transform:translateX(-50%);width:586px;max-width:82%;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+.condimentHeroCopy span{font:700 48px/52px 'Cormorant Garamond'}
+.condimentHeroCopy i{display:block;width:240px;height:2px;background:var(--gold)}
+.condimentHeroCopy h1{margin:0;font:700 72px/76px 'Cormorant Garamond';letter-spacing:-.72px}
+.condimentHeroCopy p{margin:0;font-size:18px;line-height:28px}
+.currentProductLink{color:var(--gold)}
+.condimentCategories{position:absolute;z-index:2;left:50%;bottom:50px;transform:translateX(-50%);width:min(1198px,83%);display:grid;grid-template-columns:repeat(6,1fr);gap:24px}
+.condimentCategories a{position:relative;height:92px;overflow:hidden;border:1px solid transparent;border-radius:12px;display:grid;place-items:center;color:#fff;font:700 18px/28px 'Cormorant Garamond'}
+.condimentCategories a:after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.condimentCategories a.isCurrent{border-color:var(--gold)}
+.condimentCategories img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+.condimentCategories a:hover img{transform:scale(1.07)}
+.condimentCategories span{position:relative;z-index:1;text-align:center}
+.condimentListing{padding:30px max(24px,8.5%) 80px;overflow:visible}
+.productTools{height:48px;margin:0 calc(max(24px,8.5%) * -1) 28px;padding:0 max(24px,8.5%);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:var(--cream)}
+.productSearch{width:290px;height:32px;display:flex;align-items:center;gap:8px;padding:0 12px;background:#fff;border:1px solid var(--line)}
+.productSearch span{font-size:22px;line-height:1;transform:rotate(-20deg)}
+.productSearch input{width:100%;border:0;outline:0;background:transparent;font:14px 'DM Sans'}
+.filterButtons{display:flex;height:100%}
+.filterButtons button{padding:0 14px;border:0;border-left:1px solid var(--line);background:transparent;text-transform:uppercase;font-size:11px;letter-spacing:.5px;cursor:pointer}
+.listingHeader{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px}
+.listingHeader h2{margin:0;font:700 24px/30px 'Cormorant Garamond'}
+.listingHeader p{margin:4px 0 0;color:var(--taupe);font-size:12px}
+.viewIcons{display:flex;gap:10px;color:var(--gray);font-size:22px}
+.viewIcons span:first-child{color:var(--dark)}
+.condimentGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.condimentCard{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:#fff;transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s ease}
+.condimentCard:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(37,37,37,.12)}
+.condimentCard>div{height:383px;background:#f3f3f1;overflow:hidden}
+.condimentCard img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s cubic-bezier(.22,.61,.36,1)}
+.condimentCard:hover img{transform:scale(1.035)}
+.condimentCard h3{min-height:68px;margin:0;padding:16px 16px 0;font:700 28px/34px 'Cormorant Garamond'}
+.condimentCard p{margin:0;padding:8px 16px 16px;color:var(--taupe);font-size:16px;line-height:24px}
+.loadMore{display:block;margin:40px auto 0;padding:10px 24px;border:2px solid var(--gold);border-radius:7px;background:#fff;color:var(--gold);font:700 16px/24px 'Cormorant Garamond';cursor:pointer}
+.noProducts{padding:80px 0;text-align:center;color:var(--gray)}
+.condimentCta{height:560px;background:var(--gray);color:var(--cream)}
+.condimentCta>div{position:absolute;z-index:2;left:8.5%;top:50%;transform:translateY(-50%);width:484px;display:flex;flex-direction:column;align-items:flex-start;gap:32px}
+.condimentCta h2{margin:0;font:700 56px/60px 'Cormorant Garamond'}
+.condimentCta p{margin:0;font-size:18px;line-height:28px}
+.condimentCta>img{position:absolute;right:-8%;top:-40px;width:62%;height:640px;object-fit:contain;transform:rotate(-2.43deg)}
+.condimentCta em{position:absolute;z-index:2;left:42%;top:185px;width:210px;color:var(--taupe);font:700 30px/32px 'Caveat';transform:rotate(-8deg)}
+
 @media(prefers-reduced-motion:no-preference){
   .heroVideo{animation:heroBackgroundIn 1.4s cubic-bezier(.22,.61,.36,1) both}
   .scrollCue{animation:scrollCue 1.65s cubic-bezier(.45,0,.25,1) 1.15s infinite}
@@ -181,4 +229,10 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
   footer{height:auto;padding:60px 24px 30px}.footerMain{height:auto;align-items:flex-start;gap:48px;flex-direction:column}
   .sealGrid{width:100%;height:auto;grid-template-columns:repeat(5,1fr);grid-template-rows:auto;gap:14px}
   .sealGrid img{width:48px;height:48px}.copyright{gap:20px;flex-direction:column;align-items:flex-start}
+  .condimentHero{height:720px}.condimentPage .nav{position:absolute}
+  .condimentHeroCopy{top:130px;gap:12px}.condimentHeroCopy span{font-size:34px;line-height:40px}.condimentHeroCopy h1{font-size:52px;line-height:56px}.condimentHeroCopy p{font-size:15px;line-height:22px}
+  .condimentCategories{bottom:24px;width:calc(100% - 48px);display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:2px}.condimentCategories a{flex:0 0 150px;height:82px;scroll-snap-align:start}
+  .condimentListing{padding:24px}.productTools{height:auto;margin:0 -24px 28px;padding:12px 24px;flex-direction:column;align-items:stretch;gap:12px}.productSearch{width:100%}.filterButtons{overflow-x:auto}.filterButtons button{min-width:max-content;padding:9px 12px;border:1px solid var(--line)}
+  .condimentGrid{grid-template-columns:1fr;gap:16px}.condimentCard>div{height:330px}.condimentCard h3{min-height:0;font-size:24px;line-height:30px}
+  .condimentCta{height:auto;min-height:650px;padding:56px 24px}.condimentCta>div{position:relative;inset:auto;transform:none;width:100%}.condimentCta h2{font-size:46px;line-height:48px}.condimentCta>img{position:absolute;right:-28%;top:270px;width:130%;height:410px}.condimentCta em{display:none}
 }
