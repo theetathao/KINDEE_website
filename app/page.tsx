@@ -190,11 +190,11 @@ export default function Home() {
         <div className="copy left light"><div className="sectionHeadingReveal" data-reveal><span>04.</span><h2>Quality Starts<br/>With What Goes In.</h2></div><p className="revealDelay1" data-reveal>We carefully select ingredients and maintain high standards of food quality and safety — because great flavor begins long before it reaches the table.</p><a className="goldBtn revealDelay2" data-reveal href="#service">Learn more <Arrow /></a></div>
         <div className="ingredientArt" data-ingredient-reveal aria-label="Fresh lime, garlic, red chili and basil">
           {[
-            ['ingredientLime','Fresh lime'],
-            ['ingredientChili','Fresh red chili'],
-            ['ingredientGarlic','Fresh garlic'],
-            ['ingredientBasil','Fresh basil'],
-          ].map(([className,label]) => <span className={`ingredient ${className}`} role="img" aria-label={label} tabIndex={0} key={className}><span className="ingredientFocus"><span className="ingredientFloat"><img src={`${A}ingredients.png`} alt="" /></span></span></span>)}
+            ['ingredientLime','Lime','lime.png'],
+            ['ingredientChili','Chili','chili.png'],
+            ['ingredientGarlic','Garlic','garlic.png'],
+            ['ingredientBasil','Thai Basil','basil.png'],
+          ].map(([className,label,file]) => <span className={`ingredient ${className}`} role="img" aria-label={label} tabIndex={0} key={className}><span className="ingredientFocus"><span className="ingredientFloat"><img src={`${A}ingredients-v2/${file}`} alt="" /></span></span><span className="ingredientLabel"><span>{label}</span><img src={`${A}handwriting-arrow.svg`} alt="" /></span></span>)}
         </div><em className="note selected revealDelay2" data-reveal>carefully selected ↑</em>
       </section>
       <section className="service" id="service">

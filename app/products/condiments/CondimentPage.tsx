@@ -54,8 +54,8 @@ export default function CondimentPage() {
 
       <section className="condimentListing">
         <div className="productTools">
-          <label className="productSearch"><span aria-hidden="true">⌕</span><input value={query} onChange={event => { setQuery(event.target.value); setVisible(9); }} placeholder="Search" aria-label="Search condiments" /></label>
-          <div className="filterButtons" aria-label="Product filters"><button>Product Type⌄</button><button>Dietary⌄</button><button>Certification⌄</button><button>Sort By⌄</button></div>
+          <label className="productSearch"><img src={`${A}condiments/search.svg`} alt="" /><input value={query} onChange={event => { setQuery(event.target.value); setVisible(9); }} placeholder="Search" aria-label="Search condiments" /></label>
+          <div className="filterButtons" aria-label="Product filters">{['Product Type','Dietary','Certification','Sort By'].map(label => <button key={label}>{label}<img src={`${A}condiments/caret-down.svg`} alt="" /></button>)}</div>
         </div>
         <div className="listingHeader"><div><h2>All Condiments</h2><p>Showing {Math.min(visible, filtered.length)} of {filtered.length} products</p></div><div className="viewIcons" aria-label="Grid view selected"><span>▦</span><span>☷</span></div></div>
         {filtered.length ? <div className="condimentGrid">{filtered.slice(0, visible).map(({ product, index }) => <article className="condimentCard" key={product[0]}><div><img src={`${A}condiments/product-${String(index + 1).padStart(2, '0')}.png`} alt={product[0]} /></div><h3>{product[0]}</h3><p>{product[1]}</p></article>)}</div> : <p className="noProducts">No condiments match your search.</p>}

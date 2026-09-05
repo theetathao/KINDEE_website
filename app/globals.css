@@ -103,22 +103,29 @@ section{position:relative;overflow:hidden;width:100%}
 .copy.light{color:var(--cream)}
 .quality .copy{top:clamp(150px,20svh,230px);width:510px;gap:clamp(28px,4.5svh,56px)}
 .quality .sectionHeadingReveal{gap:clamp(24px,4svh,48px)}
-.ingredientArt{position:absolute;right:1.5%;top:12svh;width:50%;height:72svh}
-.ingredient{position:absolute;inset:0;display:block;opacity:0;cursor:default;filter:drop-shadow(8px 14px 12px rgba(56,42,29,.2));will-change:transform,opacity}
+.ingredientArt{position:absolute;right:3%;top:10svh;width:50%;height:76svh}
+.ingredient{position:absolute;display:block;opacity:0;cursor:default;will-change:transform,opacity;z-index:1}
 .ingredientFocus,.ingredientFloat{position:absolute;inset:0;display:block;will-change:transform,opacity}
+.ingredientFocus{filter:drop-shadow(8px 14px 12px rgba(56,42,29,.22));transition:opacity .65s ease,transform .65s cubic-bezier(.22,.61,.36,1)}
 .ingredient img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
-.ingredientLime{--x:-30%;--y:-15%;--rot:-2deg;--delay:0s;--floatY:-4px;--floatRot:.7deg;--floatDur:5.4s;--origin:64% 52%;clip-path:polygon(51% 31%,77% 31%,77% 70%,51% 70%);transform-origin:var(--origin)}
-.ingredientChili{--x:14%;--y:18%;--rot:-7deg;--delay:.18s;--floatY:-5px;--floatRot:1deg;--floatDur:4.9s;--origin:14% 50%;clip-path:polygon(0 22%,29% 22%,29% 74%,0 74%);transform-origin:var(--origin)}
-.ingredientGarlic{--x:25%;--y:-23%;--rot:2deg;--delay:.36s;--floatY:-3px;--floatRot:-.6deg;--floatDur:5.8s;--origin:38% 53%;clip-path:polygon(25% 27%,51% 27%,51% 73%,25% 73%);transform-origin:var(--origin)}
-.ingredientBasil{--x:-19%;--y:17%;--rot:3deg;--delay:.54s;--floatY:-4px;--floatRot:-1deg;--floatDur:6.2s;--origin:87% 53%;clip-path:polygon(74% 25%,100% 25%,100% 74%,74% 74%);transform-origin:var(--origin)}
+.ingredientLime{left:7%;top:9%;width:34%;height:34%;--delay:0s;--floatY:-4px;--floatRot:.7deg;--floatDur:5.4s}
+.ingredientChili{left:2%;bottom:5%;width:45%;height:46%;--delay:.18s;--floatY:-5px;--floatRot:1deg;--floatDur:4.9s}
+.ingredientGarlic{right:2%;top:1%;width:36%;height:39%;--delay:.36s;--floatY:-3px;--floatRot:-.6deg;--floatDur:5.8s}
+.ingredientBasil{right:0;bottom:0;width:41%;height:47%;--delay:.54s;--floatY:-4px;--floatRot:-1deg;--floatDur:6.2s}
 .ingredientArt.is-visible .ingredient{animation:ingredientEnter 1.25s cubic-bezier(.16,1,.3,1) var(--delay) both}
 .ingredientArt.is-visible .ingredientFloat{animation:ingredientFloat var(--floatDur) ease-in-out calc(1.35s + var(--delay)) infinite alternate}
-.ingredientArt.is-visible .ingredient:not(.ingredientChili) .ingredientFocus{animation:ingredientSoften 5.8s ease-out forwards}
-.ingredientArt.is-visible .ingredientChili .ingredientFocus{animation:chiliFocus 5.8s cubic-bezier(.22,.61,.36,1) forwards}
 .ingredient:focus-visible{outline:2px solid rgba(245,240,230,.75);outline-offset:-12px}
-.ingredientArt:has(.ingredient:is(:hover,:focus-visible)) .ingredient .ingredientFocus{animation:none;opacity:.5;transform:scale(1);transition:opacity .65s ease,transform .65s cubic-bezier(.22,.61,.36,1)}
-.ingredientArt:has(.ingredient:is(:hover,:focus-visible)) .ingredient:is(:hover,:focus-visible) .ingredientFocus{opacity:1;transform:scale(1.065)}
+.ingredientArt:has(.ingredient:is(:hover,:focus-visible)) .ingredient .ingredientFocus{opacity:.48;transform:scale(1)}
+.ingredientArt:has(.ingredient:is(:hover,:focus-visible)) .ingredient:is(:hover,:focus-visible){z-index:4}
+.ingredientArt:has(.ingredient:is(:hover,:focus-visible)) .ingredient:is(:hover,:focus-visible) .ingredientFocus{opacity:1;transform:scale(1.065) rotate(1.5deg)}
 .ingredientArt:has(.ingredient:is(:hover,:focus-visible)) + .selected{opacity:1;filter:drop-shadow(0 4px 8px rgba(56,42,29,.22));transform:translateY(-2px)}
+.ingredientLabel{position:absolute;z-index:5;display:flex;align-items:center;gap:7px;color:var(--cream);font:700 27px/30px 'Caveat';white-space:nowrap;opacity:0;transform:translateY(10px);transition:opacity .4s ease,transform .5s cubic-bezier(.22,.61,.36,1);pointer-events:none}
+.ingredientLabel img{width:55px;height:32px;object-fit:contain}
+.ingredient:is(:hover,:focus-visible) .ingredientLabel{opacity:1;transform:translateY(0)}
+.ingredientLime .ingredientLabel{left:82%;bottom:4%}.ingredientLime .ingredientLabel img{transform:rotate(155deg)}
+.ingredientChili .ingredientLabel{left:82%;top:44%}.ingredientChili .ingredientLabel img{transform:rotate(165deg)}
+.ingredientGarlic .ingredientLabel{right:78%;bottom:4%;flex-direction:row-reverse}.ingredientGarlic .ingredientLabel img{transform:rotate(-8deg)}
+.ingredientBasil .ingredientLabel{right:76%;top:48%;flex-direction:row-reverse}.ingredientBasil .ingredientLabel img{transform:rotate(5deg)}
 .selected{position:absolute;right:27%;bottom:13svh;color:var(--cream)}
 
 .service{height:100svh;background:linear-gradient(90deg,transparent,rgba(37,37,37,.8)),url('/assets/farm.png') center/cover;color:#fff}
@@ -171,12 +178,13 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 .condimentCategories a:hover img{transform:scale(1.07)}
 .condimentCategories span{position:relative;z-index:1;text-align:center}
 .condimentListing{padding:0 max(24px,8.5%) 80px;overflow:visible}
-.productTools{height:124px;margin:0 calc(max(24px,8.5%) * -1) 28px;padding:0 max(24px,8.5%);display:flex;align-items:center;justify-content:space-between;background:var(--cream)}
-.productSearch{width:416px;height:54px;display:flex;align-items:center;gap:10px;padding:0 16px;background:#fff;border:1px solid var(--line);border-radius:10px}
-.productSearch span{font-size:22px;line-height:1;transform:rotate(-20deg)}
-.productSearch input{width:100%;border:0;outline:0;background:transparent;font:14px 'DM Sans'}
-.filterButtons{display:flex;align-items:center;gap:22px}
-.filterButtons button{height:58px;padding:0 18px;border:1px solid var(--line);background:#fff;text-transform:uppercase;font-size:14px;letter-spacing:.2px;cursor:pointer}
+.productTools{height:80px;margin:0 calc(max(24px,8.5%) * -1) 28px;padding:20px max(24px,8.5%);display:flex;align-items:center;justify-content:space-between;background:var(--cream)}
+.productSearch{width:295px;height:40px;display:flex;align-items:center;gap:6px;padding:8px 12px;background:#fff;border:2px solid #f3f3f1;border-radius:8px}
+.productSearch img{width:16px;height:16px}
+.productSearch input{width:100%;border:0;outline:0;background:transparent;font:16px/24px 'DM Sans';color:#6c6c6c}
+.filterButtons{display:flex;align-items:center;gap:15px}
+.filterButtons button{height:40px;padding:8px 12px;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;text-transform:uppercase;font-size:16px;line-height:24px;cursor:pointer}
+.filterButtons img{width:24px;height:24px}
 .listingHeader{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px}
 .listingHeader h2{margin:0;font:700 24px/30px 'Cormorant Garamond'}
 .listingHeader p{margin:4px 0 0;color:var(--taupe);font-size:12px}
@@ -211,10 +219,8 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 @keyframes heroBackgroundIn{from{opacity:0}to{opacity:1}}
 @keyframes scrollCue{0%,100%{transform:translateY(0);opacity:1}45%{transform:translateY(9px);opacity:.58}70%{transform:translateY(3px);opacity:.88}}
 @keyframes productInfoIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@keyframes ingredientEnter{from{opacity:0;transform:translate(var(--x),calc(var(--y) + 28px)) rotate(calc(var(--rot) - 2deg))}to{opacity:1;transform:translate(var(--x),var(--y)) rotate(var(--rot))}}
+@keyframes ingredientEnter{from{opacity:0;transform:translateY(28px) rotate(-2deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
 @keyframes ingredientFloat{from{transform:translateY(0) rotate(0)}to{transform:translateY(var(--floatY)) rotate(var(--floatRot))}}
-@keyframes ingredientSoften{0%,68%{opacity:1}100%{opacity:.52}}
-@keyframes chiliFocus{0%,68%{transform:scale(1)}100%{transform:scale(1.065)}}
 
 @media(max-width:800px){
   .hero{height:100svh}
@@ -257,6 +263,6 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 }
 
 @media(prefers-reduced-motion:reduce){
-  .ingredient{opacity:1!important;animation:none!important;transform:translate(var(--x),var(--y)) rotate(var(--rot))!important}
+  .ingredient{opacity:1!important;animation:none!important;transform:none!important}
   .ingredientFocus,.ingredientFloat{animation:none!important;transition:none!important}
 }
