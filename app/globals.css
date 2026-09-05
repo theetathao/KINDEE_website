@@ -137,14 +137,14 @@ section{position:relative;overflow:hidden;width:100%}
 .serviceCopy h2{margin:0}
 .serviceCopy p{max-width:470px}
 .serviceCopy .outlineBtn{padding:10px 24px;background:rgba(20,20,18,.16)}
-.values{position:absolute;left:50%;bottom:clamp(40px,7.5svh,108px);transform:translateX(-50%);width:83.5%;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:20px;border:1px solid var(--gold);border-radius:16px;background:rgba(8,8,6,.68);backdrop-filter:blur(10px)}
+.values{position:absolute;left:50%;bottom:clamp(130px,16svh,180px);transform:translateX(-50%);width:83.5%;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:18px;border:1px solid var(--gold);border-radius:16px;background:rgba(8,8,6,.68);backdrop-filter:blur(10px)}
 .values article{display:flex;gap:20px}
 .values img{width:40px;height:40px}
-.values h3{margin:0 0 8px;font:700 28px/34px 'Cormorant Garamond'}
-.values p{margin:0;font-size:16px;line-height:24px}
+.values h3{margin:0 0 6px;font:700 24px/28px 'Cormorant Garamond'}
+.values p{margin:0;font-size:14px;line-height:20px}
 .serviceNote{position:absolute;left:32%;top:17.5svh;display:flex;align-items:flex-start;color:var(--line);font:700 42px/44px 'Caveat';transform:rotate(7.5deg)}
 .serviceNote span{white-space:nowrap}
-.serviceNote img{width:70px;height:54px;margin:38px 0 0 2px;object-fit:contain;transform:rotate(112deg)}
+.serviceNote img{width:70px;height:54px;margin:38px 0 0 2px;object-fit:contain;filter:brightness(0) invert(1);transform:rotate(-64deg)}
 
 .catalog{height:560px;background:var(--gray)}
 .catalog .copy{top:83px;width:484px;gap:32px}
