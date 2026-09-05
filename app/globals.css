@@ -194,7 +194,12 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 .listingHeader{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px}
 .listingHeader h2{margin:0;font:700 24px/30px 'Cormorant Garamond'}
 .listingHeader p{margin:4px 0 0;color:var(--taupe);font-size:12px}
-.viewIcons{display:flex;gap:10px;color:var(--gray);font-size:22px}
+.viewIcons{display:flex;align-items:center;gap:12px;color:var(--taupe);font-size:14px;line-height:21px}
+.viewIcons>span{white-space:nowrap}
+.viewIcons>div{display:flex;align-items:center;gap:8px}
+.viewIcons button{display:grid;width:36px;height:36px;padding:8px;place-items:center;border:1px solid var(--line);border-radius:4px;background:#fff;cursor:pointer}
+.viewIcons button.active{border-color:var(--dark)}
+.viewIcons img{display:block;width:20px;height:20px}
 .viewIcons span:first-child{color:var(--dark)}
 .condimentGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .condimentCard{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:#fff;transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s ease}
