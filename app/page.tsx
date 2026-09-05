@@ -207,7 +207,7 @@ export default function Home() {
         </div><em className="note selected revealDelay2" data-reveal>carefully selected ↑</em>
       </section>
       <section className="service" id="service">
-        <em className="serviceNote revealDelay1" data-reveal><span>It all begins here</span><img src={`${A}handwriting-arrow.svg`} alt="" /></em>
+        <em className="serviceNote revealDelay1" data-reveal><span>It all begins here</span><span className="serviceArrow" aria-hidden="true" /></em>
         <div className="serviceCopy"><div className="sectionHeadingReveal" data-reveal><span>05.</span><h2>Every Bite<br/>Tells a Story.</h2></div><p className="revealDelay1" data-reveal>We believe in protecting the environment for future generations by partnering with suppliers who practice sustainable farming.</p><a className="outlineBtn revealDelay2" data-reveal href="#catalog">Our Service <Arrow /></a></div>
         <div className="values revealDelay1" data-reveal>{[["plant.svg","Sustainable Farming","Partnering with suppliers who practice sustainable farming."],["medal.svg","Quality from the Source","Carefully managed from sourcing through processing."],["mountains.svg","Traceable Ingredients","Raw materials can be traced back to their source."]].map(([icon,title,body])=><article key={title}><img src={A+icon} alt=""/><div><h3>{title}</h3><p>{body}</p></div></article>)}</div>
       </section>

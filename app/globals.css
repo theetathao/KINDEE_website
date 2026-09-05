@@ -128,7 +128,7 @@ section{position:relative;overflow:hidden;width:100%}
 .ingredientBasil .ingredientLabel{right:82%;top:48%}
 .selected{position:absolute;right:27%;bottom:13svh;color:var(--cream);font-size:29px;line-height:31px}
 
-.service{isolation:isolate;height:100svh;min-height:900px;background:url('/assets/farm.png') 3% 92%/160% auto no-repeat;color:#fff}
+.service{isolation:isolate;height:clamp(700px,calc(100svh - 160px),900px);min-height:0;background:url('/assets/farm.png') 3% 92%/160% auto no-repeat;color:#fff}
 .service:before{content:'';position:absolute;z-index:0;inset:0;background:linear-gradient(90deg,rgba(16,15,11,.22) 0%,rgba(18,17,13,.29) 44%,rgba(20,20,18,.78) 100%),rgba(8,8,6,.18)}
 .service>*{z-index:1}
 .serviceCopy{position:absolute;right:8.2%;top:clamp(132px,17.5svh,210px);width:487px;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:clamp(28px,4svh,48px)}
@@ -137,14 +137,14 @@ section{position:relative;overflow:hidden;width:100%}
 .serviceCopy h2{margin:0}
 .serviceCopy p{max-width:470px}
 .serviceCopy .outlineBtn{padding:10px 24px;background:rgba(20,20,18,.16)}
-.values{position:absolute;left:50%;bottom:clamp(130px,16svh,180px);transform:translateX(-50%);width:83.5%;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:18px;border:1px solid var(--gold);border-radius:16px;background:rgba(8,8,6,.68);backdrop-filter:blur(10px)}
+.values{position:absolute;left:50%;bottom:clamp(64px,8svh,90px);transform:translateX(-50%);width:83.5%;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:18px;border:1px solid var(--gold);border-radius:16px;background:rgba(8,8,6,.68);backdrop-filter:blur(10px)}
 .values article{display:flex;gap:20px}
 .values img{width:40px;height:40px}
 .values h3{margin:0 0 6px;font:700 24px/28px 'Cormorant Garamond'}
 .values p{margin:0;font-size:14px;line-height:20px}
 .serviceNote{position:absolute;left:32%;top:17.5svh;display:flex;align-items:flex-start;color:var(--line);font:700 42px/44px 'Caveat';transform:rotate(7.5deg)}
 .serviceNote span{white-space:nowrap}
-.serviceNote img{width:70px;height:54px;margin:38px 0 0 2px;object-fit:contain;filter:brightness(0) invert(1);transform:rotate(-64deg)}
+.serviceArrow{display:block;width:70px;height:54px;margin:38px 0 0 2px;background:currentColor;-webkit-mask:url('/assets/handwriting-arrow.svg') center/contain no-repeat;mask:url('/assets/handwriting-arrow.svg') center/contain no-repeat;transform:scaleX(-1) rotate(-64deg)}
 
 .catalog{height:560px;background:var(--gray)}
 .catalog .copy{top:83px;width:484px;gap:32px}
@@ -173,7 +173,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 .condimentPage .nav{position:fixed}
 .condimentHeroCopy{position:absolute;z-index:2;left:50%;top:192px;transform:translateX(-50%);width:586px;max-width:82%;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
 .condimentHeroCopy span{font:700 48px/52px 'Cormorant Garamond'}
-.condimentHeroCopy i{display:block;width:240px;height:2px;background:var(--gold)}
+.condimentHeroLine{display:block;width:240px;height:2px}
 .condimentHeroCopy h1{margin:0;font:700 72px/76px 'Cormorant Garamond';letter-spacing:-.72px}
 .condimentHeroCopy p{margin:0;font-size:18px;line-height:28px}
 .currentProductLink{color:var(--gold)}
@@ -203,6 +203,11 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 .viewIcons img{display:block;width:20px;height:20px}
 .viewIcons span:first-child{color:var(--dark)}
 .condimentGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.condimentGrid.listView{grid-template-columns:1fr;gap:12px}
+.listView .condimentCard{display:grid;grid-template-columns:180px minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:24px;align-items:start}
+.listView .condimentCard>div{grid-row:1/3;height:140px}
+.listView .condimentCard h3{grid-column:2;min-height:0;padding:24px 20px 0}
+.listView .condimentCard p{grid-column:2;padding:8px 20px 20px}
 .condimentCard{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:#fff;transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s ease}
 .condimentCard:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(37,37,37,.12)}
 .condimentCard>div{height:383px;background:#f3f3f1;overflow:hidden}
@@ -270,7 +275,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
   .condimentHeroCopy{top:130px;gap:12px}.condimentHeroCopy span{font-size:34px;line-height:40px}.condimentHeroCopy h1{font-size:52px;line-height:56px}.condimentHeroCopy p{font-size:15px;line-height:22px}
   .condimentCategories{bottom:24px;width:calc(100% - 48px);display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:2px}.condimentCategories a{flex:0 0 150px;height:82px;scroll-snap-align:start}
   .condimentListing{padding:0 24px 24px}.productTools{height:auto;margin:0 calc(50% - 50vw) 28px;padding:18px 24px;flex-direction:column;align-items:stretch;gap:12px}.productSearch{width:100%;height:50px}.filterButtons{overflow-x:auto;gap:8px}.filterButtons button{min-width:max-content;height:44px;padding:9px 12px}
-  .condimentGrid{grid-template-columns:1fr;gap:16px}.condimentCard>div{height:330px}.condimentCard h3{min-height:0;font-size:24px;line-height:30px}
+  .condimentGrid{grid-template-columns:1fr;gap:16px}.condimentCard>div{height:330px}.condimentCard h3{min-height:0;font-size:24px;line-height:30px}.listView .condimentCard{grid-template-columns:110px minmax(0,1fr);column-gap:12px}.listView .condimentCard>div{height:110px}.listView .condimentCard h3{padding:14px 12px 0;font-size:20px;line-height:24px}.listView .condimentCard p{padding:5px 12px 12px;font-size:14px;line-height:20px}
   .condimentCta{height:auto;min-height:650px;padding:56px 24px}.condimentCta>div{position:relative;inset:auto;transform:none;width:100%}.condimentCta h2{font-size:46px;line-height:48px}.condimentCta>img{position:absolute;right:-28%;top:270px;width:130%;height:410px}.condimentCta em{display:none}
 }
 

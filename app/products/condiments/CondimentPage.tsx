@@ -32,6 +32,7 @@ export default function CondimentPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [visible, setVisible] = useState(9);
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const filtered = useMemo(() => products.map((product, index) => ({ product, index })).filter(({ product }) => product[0].toLowerCase().includes(query.toLowerCase())), [query]);
 
   return (
@@ -48,7 +49,7 @@ export default function CondimentPage() {
             <nav className="mainMenu" aria-label="Main navigation"><a href="/">Home</a><a href="/#about">About</a><a className="active" href="/#products">Product</a><a href="/#service">Services</a><a href="#">Recipes</a><a href="#">Contact</a></nav>
           </div>}
         </header>
-        <div className="condimentHeroCopy"><span>Products</span><i aria-hidden="true" /><h1>Condiment</h1><p>Authentic sauces, pastes and seasonings crafted from quality ingredients to bring the true taste of Southeast Asia to your table.</p></div>
+        <div className="condimentHeroCopy"><span>Products</span><img className="condimentHeroLine" src={`${A}condiments/hero-line.svg`} alt="" /><h1>Condiment</h1><p>Authentic sauces, pastes and seasonings crafted from quality ingredients to bring the true taste of Southeast Asia to your table.</p></div>
         <nav className="condimentCategories" aria-label="Product categories">{categories.map(([name,image,href]) => <a href={href} className={name === 'Condiments' ? 'isCurrent' : ''} key={name}><img src={`${A}${image}`} alt="" /><span>{name}</span></a>)}</nav>
       </section>
 
@@ -57,8 +58,8 @@ export default function CondimentPage() {
           <label className="productSearch"><img src={`${A}condiments/search.svg`} alt="" /><input value={query} onChange={event => { setQuery(event.target.value); setVisible(9); }} placeholder="Search" aria-label="Search condiments" /></label>
           <div className="filterButtons" aria-label="Product filters">{['Product Type','Dietary','Certification','Sort By'].map(label => <button key={label}>{label}<img src={`${A}condiments/caret-down.svg`} alt="" /></button>)}</div>
         </div>
-        <div className="listingHeader"><div><h2>All Condiments</h2><p>Showing {Math.min(visible, filtered.length)} of {filtered.length} products</p></div><div className="viewIcons" aria-label="View options"><span>VIEW AS</span><div><button className="active" type="button" aria-label="Grid view selected" aria-pressed="true"><img src={`${A}condiments/view-grid.svg`} alt="" /></button><button type="button" aria-label="List view" aria-pressed="false"><img src={`${A}condiments/view-list.svg`} alt="" /></button></div></div></div>
-        {filtered.length ? <div className="condimentGrid">{filtered.slice(0, visible).map(({ product, index }) => <article className="condimentCard" key={product[0]}><div><img src={`${A}condiments/product-${String(index + 1).padStart(2, '0')}.png`} alt={product[0]} /></div><h3>{product[0]}</h3><p>{product[1]}</p></article>)}</div> : <p className="noProducts">No condiments match your search.</p>}
+        <div className="listingHeader"><div><h2>All Condiments</h2><p>Showing {Math.min(visible, filtered.length)} of {filtered.length} products</p></div><div className="viewIcons" aria-label="View options"><span>VIEW AS</span><div><button className={viewMode === 'grid' ? 'active' : ''} type="button" onClick={() => setViewMode('grid')} aria-label="Grid view" aria-pressed={viewMode === 'grid'}><img src={`${A}condiments/view-grid.svg`} alt="" /></button><button className={viewMode === 'list' ? 'active' : ''} type="button" onClick={() => setViewMode('list')} aria-label="List view" aria-pressed={viewMode === 'list'}><img src={`${A}condiments/view-list.svg`} alt="" /></button></div></div></div>
+        {filtered.length ? <div className={`condimentGrid ${viewMode === 'list' ? 'listView' : ''}`}>{filtered.slice(0, visible).map(({ product, index }) => <article className="condimentCard" key={product[0]}><div><img src={`${A}condiments/product-${String(index + 1).padStart(2, '0')}.png`} alt={product[0]} /></div><h3>{product[0]}</h3><p>{product[1]}</p></article>)}</div> : <p className="noProducts">No condiments match your search.</p>}
         {visible < filtered.length && <button className="loadMore" onClick={() => setVisible(products.length)}>Load More</button>}
       </section>
 
