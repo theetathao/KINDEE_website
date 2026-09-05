@@ -91,9 +91,10 @@ section{position:relative;overflow:hidden;width:100%}
 .categoryArea{position:absolute;left:4.93%;right:4.65%;top:712px;text-align:center}
 .categoryArea>p{margin:0 0 16px;font-size:18px}
 .categoryCarousel{display:grid;grid-template-columns:32px minmax(0,1fr) 32px;align-items:center;gap:20px}
-.categories{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:24px;overflow:hidden;scroll-snap-type:x proximity}
+.categories{display:flex;gap:24px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;scrollbar-width:none}
+.categories::-webkit-scrollbar{display:none}
 .categoryNav{width:32px;height:32px;padding:0;border:0;background:transparent;color:var(--gold);font:400 42px/26px 'Cormorant Garamond';cursor:pointer}
-.categoryCard{height:145px;padding:0;overflow:hidden;border:0;border-radius:12px;background:var(--cream);color:var(--dark);cursor:pointer;text-align:left}
+.categoryCard{flex:0 0 calc((100% - 120px)/6);min-width:0;height:145px;padding:0;overflow:hidden;border:0;border-radius:12px;background:var(--cream);color:var(--dark);cursor:pointer;text-align:left;scroll-snap-align:start}
 .categoryImage{display:block;width:100%;height:100px;object-fit:cover;transition:transform .4s cubic-bezier(.22,.61,.36,1)}
 .categoryCard:hover .categoryImage{transform:scale(1.05)}
 .categoryCard>span:last-child{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;font-size:18px;line-height:28px}

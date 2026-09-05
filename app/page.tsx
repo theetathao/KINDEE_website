@@ -12,12 +12,19 @@ const FEATURED_PRODUCTS = [
 ];
 
 const PRODUCT_CATEGORIES = [
-  { name: 'Honey', image: 'category-honey.png' },
-  { name: 'Condiments', image: 'category-condiments.png' },
-  { name: 'Ready to cook', image: 'category-ready-to-cook.png' },
-  { name: 'Snacks', image: 'category-snacks.png' },
-  { name: 'Coconut Milk', image: 'category-coconut-milk.png' },
-  { name: 'Rice', image: 'category-rice.png' },
+  { name: 'Honey', image: 'category-honey.png', href: 'https://www.thekindeeco.com/product_category/honey/' },
+  { name: 'Condiments', image: 'category-condiments.png', href: '/products/condiments' },
+  { name: 'Ready to eat', image: 'category-ready-to-cook.png', href: 'https://www.thekindeeco.com/product_category/ready-to-eat/' },
+  { name: 'Ready to cook', image: 'category-ready-to-cook.png', href: 'https://www.thekindeeco.com/product_category/ready-to-cook/' },
+  { name: 'Snacks', image: 'category-snacks.png', href: 'https://www.thekindeeco.com/product_category/snacks/' },
+  { name: 'Coconut Milk', image: 'category-coconut-milk.png', href: 'https://www.thekindeeco.com/product_category/coconut-milk/' },
+  { name: 'Rice', image: 'category-rice.png', href: 'https://www.thekindeeco.com/product_category/rice/' },
+  { name: 'Dried Fruits', image: 'category-honey.png', href: 'https://www.thekindeeco.com/product_category/dried-fruits/' },
+  { name: 'Beverages', image: 'category-coconut-milk.png', href: 'https://www.thekindeeco.com/product_category/beverages/' },
+  { name: 'Frozen Foods', image: 'category-ready-to-cook.png', href: 'https://www.thekindeeco.com/product_category/frozen-foods/' },
+  { name: 'Accessory Items', image: 'category-condiments.png', href: 'https://www.thekindeeco.com/product_category/accessory-items/' },
+  { name: 'Exclusive Partner', image: 'product-main.png', href: 'https://www.thekindeeco.com/product_category/exclusive-partner/' },
+  { name: "Australia's products", image: 'categories.png', href: 'https://www.thekindeeco.com/product_category/australia/' },
 ];
 
 export default function Home() {
@@ -30,7 +37,9 @@ export default function Home() {
   const categoryTrackRef = useRef<HTMLDivElement>(null);
 
   const scrollCategories = (direction: number) => {
-    categoryTrackRef.current?.scrollBy({ left: direction * 420, behavior: 'smooth' });
+    const track = categoryTrackRef.current;
+    if (!track) return;
+    track.scrollBy({ left: direction * Math.max(220, track.clientWidth * .72), behavior: 'smooth' });
   };
 
   const moveProductTooltip = (event: MouseEvent<HTMLDivElement>) => {
@@ -184,7 +193,7 @@ export default function Home() {
         </div>
         {hoveredProduct !== null && <div className="productInfoCard" role="status" style={tooltipPosition ? { left: tooltipPosition.x, top: tooltipPosition.y } : undefined}><strong>{FEATURED_PRODUCTS[hoveredProduct].name}<br/><span>({FEATURED_PRODUCTS[hoveredProduct].detail})</span></strong><small>{FEATURED_PRODUCTS[hoveredProduct].size}</small></div>}
         <em className="note flavor revealDelay2" data-reveal>The Flavor Behind Every Dish.</em>
-        <div className="categoryArea revealDelay2" data-reveal><p>Sort by Category</p><div className="categoryCarousel"><button className="categoryNav" type="button" onClick={() => scrollCategories(-1)} aria-label="Previous categories">‹</button><div className="categories" ref={categoryTrackRef}>{PRODUCT_CATEGORIES.map(category => <a className="categoryCard" href={category.name === 'Condiments' ? '/products/condiments' : '#products'} key={category.name}><img className="categoryImage" src={`${A}${category.image}`} alt=""/><span>{category.name}<b>›</b></span></a>)}</div><button className="categoryNav" type="button" onClick={() => scrollCategories(1)} aria-label="Next categories">›</button></div></div>
+        <div className="categoryArea revealDelay2" data-reveal><p>Sort by Category</p><div className="categoryCarousel"><button className="categoryNav" type="button" onClick={() => scrollCategories(-1)} aria-label="Previous categories">‹</button><div className="categories" ref={categoryTrackRef}>{PRODUCT_CATEGORIES.map(category => <a className="categoryCard" href={category.href} key={category.name}><img className="categoryImage" src={`${A}${category.image}`} alt=""/><span>{category.name}<b>›</b></span></a>)}</div><button className="categoryNav" type="button" onClick={() => scrollCategories(1)} aria-label="Next categories">›</button></div></div>
       </section>
       <section className="quality" id="quality">
         <div className="copy left light"><div className="sectionHeadingReveal" data-reveal><span>04.</span><h2>Quality Starts<br/>With What Goes In.</h2></div><p className="revealDelay1" data-reveal>We carefully select ingredients and maintain high standards of food quality and safety — because great flavor begins long before it reaches the table.</p><a className="goldBtn revealDelay2" data-reveal href="#service">Learn more <Arrow /></a></div>
