@@ -5,10 +5,31 @@ import { useEffect, useRef, useState } from 'react';
 const A = '/assets/';
 function Arrow() { return <span aria-hidden="true">→</span>; }
 
+const FEATURED_PRODUCTS = [
+  { name: 'Thai Jim Jaew Sauce', detail: 'Spicy BBQ Sauce', size: '13.76 oz' },
+  { name: 'Thai Sukiyaki Sauce', detail: 'Chili Garlic Sauce', size: '12.35 oz' },
+  { name: 'Thai Chili Lime Sauce', detail: 'Seafood Dipping Sauce', size: '11.64 oz' },
+];
+
+const PRODUCT_CATEGORIES = [
+  { name: 'Honey', image: 'category-honey.png' },
+  { name: 'Condiments', image: 'category-condiments.png' },
+  { name: 'Ready to cook', image: 'category-ready-to-cook.png' },
+  { name: 'Snacks', image: 'category-snacks.png' },
+  { name: 'Coconut Milk', image: 'category-coconut-milk.png' },
+  { name: 'Rice', image: 'category-rice.png' },
+];
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
   const storyRef = useRef<HTMLElement>(null);
   const storyStageRef = useRef<HTMLDivElement>(null);
+  const categoryTrackRef = useRef<HTMLDivElement>(null);
+
+  const scrollCategories = (direction: number) => {
+    categoryTrackRef.current?.scrollBy({ left: direction * 420, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     const section = storyRef.current;
@@ -139,9 +160,15 @@ export default function Home() {
       </section>
       <section className="products" id="products">
         <div className="productIntro"><div className="sectionHeadingReveal" data-reveal><span>03.</span><h2>Feature Products</h2></div><p className="revealDelay1" data-reveal>From sauces and condiments to coconut milk, rice and ready-to-cook essentials, Kin Dee brings together a wide range of Southeast Asian food products.</p></div>
-        <img className="productHero revealDelay1" data-reveal src={`${A}product-main.png`} alt="Kin Dee sauce products" />
-        <div className="productCard revealDelay2" data-reveal><strong>Thai Jim Jaew Sauce<br/>(Spicy BBQ Sauce)</strong><small>13.76 oz</small></div><em className="note flavor revealDelay2" data-reveal>Authentic flavor, always.</em>
-        <div className="categoryArea revealDelay2" data-reveal><p>Sort by Category</p><div className="categories">{['Honey','Condiments','Ready to cook','Snacks','Coconut Milk','Rice'].map((x,i)=><button className="categoryCard" key={x}><span className="categoryImage" style={{backgroundPosition:`${i * 20}% 15%`}}/><span>{x}<b>›</b></span></button>)}</div></div>
+        <div className="productStage revealDelay1" data-reveal onMouseLeave={() => setHoveredProduct(null)}>
+          <img className="productHero" src={`${A}product-main.png`} alt="Three Kin Dee sauces: Jim Jaew, Sukiyaki and Chili Lime" />
+          <div className="bottleTargets">
+            {FEATURED_PRODUCTS.map((product, index) => <button key={product.name} className={`bottleTarget bottleTarget${index + 1}`} aria-label={`Show details for ${product.name}`} onMouseEnter={() => setHoveredProduct(index)} onFocus={() => setHoveredProduct(index)} onBlur={() => setHoveredProduct(null)} />)}
+          </div>
+        </div>
+        {hoveredProduct !== null && <div className="productInfoCard" role="status"><strong>{FEATURED_PRODUCTS[hoveredProduct].name}<br/><span>({FEATURED_PRODUCTS[hoveredProduct].detail})</span></strong><small>{FEATURED_PRODUCTS[hoveredProduct].size}</small></div>}
+        <em className="note flavor revealDelay2" data-reveal>The Flavor Behind Every Dish.</em>
+        <div className="categoryArea revealDelay2" data-reveal><p>Sort by Category</p><div className="categoryCarousel"><button className="categoryNav" type="button" onClick={() => scrollCategories(-1)} aria-label="Previous categories">‹</button><div className="categories" ref={categoryTrackRef}>{PRODUCT_CATEGORIES.map(category => <button className="categoryCard" key={category.name}><img className="categoryImage" src={`${A}${category.image}`} alt=""/><span>{category.name}<b>›</b></span></button>)}</div><button className="categoryNav" type="button" onClick={() => scrollCategories(1)} aria-label="Next categories">›</button></div></div>
       </section>
       <section className="quality" id="quality">
         <div className="copy left light"><div className="sectionHeadingReveal" data-reveal><span>04.</span><h2>Quality Starts<br/>With What Goes In.</h2></div><p className="revealDelay1" data-reveal>We carefully select ingredients and maintain high standards of food quality and safety — because great flavor begins long before it reaches the table.</p><a className="goldBtn revealDelay2" data-reveal href="#service">Learn more <Arrow /></a></div>

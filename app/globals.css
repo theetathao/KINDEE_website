@@ -67,20 +67,29 @@ section{position:relative;overflow:hidden;width:100%}
 .storyStage[data-reduced-motion="true"] .storySpoon,.storyStage[data-reduced-motion="true"] .storyBowl,.storyStage[data-reduced-motion="true"] .copyLead,.storyStage[data-reduced-motion="true"] .copyBody,.storyStage[data-reduced-motion="true"] .sideCopy{transition:none;--spoon-rise:0px;--passion-lead-y:0px;--passion-body-y:0px;--taste-lead-y:0px;--taste-body-y:0px}
 
 .products{height:900px;background:linear-gradient(rgba(119,115,110,.9),rgba(119,115,110,.9)),url('/assets/products-bg.png') center/cover;color:#fff}
-.productIntro{position:absolute;z-index:2;top:61px;left:50%;transform:translateX(-50%);width:792px;max-width:80%;text-align:center}
+.productIntro{position:absolute;z-index:3;top:101px;left:50%;transform:translateX(-50%);width:792px;max-width:80%;text-align:center}
 .productIntro span{color:var(--gold)}
 .productIntro h2{margin:12px 0 4px;font:700 48px/52px 'Cormorant Garamond'}
 .productIntro p{margin:0;color:var(--line);font-size:16px;line-height:24px}
-.productHero{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:615px;height:346px;object-fit:contain}
-.productCard{position:absolute;z-index:2;left:15.7%;top:342px;width:280px;padding:20px;text-align:center;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px)}
-.productCard strong{display:block;font:700 28px/34px 'Cormorant Garamond'}
-.productCard small{display:block;margin-top:8px;color:var(--line);font-size:18px;line-height:28px}
-.flavor{position:absolute;right:10%;top:494px;color:var(--line);font-size:24px;transform:rotate(5.8deg)}
-.categoryArea{position:absolute;left:5%;right:5%;bottom:55px;text-align:center}
+.productStage{position:absolute;z-index:2;left:50%;top:calc(50% + 15px);transform:translate(-50%,-50%);width:703px;height:396px}
+.productHero{display:block;width:100%;height:100%;object-fit:contain}
+.bottleTargets{position:absolute;inset:0}
+.bottleTarget{position:absolute;top:3%;width:19%;height:82%;padding:0;border:0;background:transparent;cursor:pointer;border-radius:40% 40% 18% 18%}
+.bottleTarget:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.bottleTarget1{left:22%}.bottleTarget2{left:41%}.bottleTarget3{left:60%}
+.productInfoCard{position:absolute;z-index:4;left:15.7%;top:394px;width:280px;padding:20px;text-align:center;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);animation:productInfoIn .28s cubic-bezier(.22,.61,.36,1) both}
+.productInfoCard strong{display:block;font:700 28px/34px 'Cormorant Garamond'}
+.productInfoCard strong span{font:inherit}
+.productInfoCard small{display:block;margin-top:8px;color:var(--line);font-size:18px;line-height:28px}
+.flavor{position:absolute;right:10%;top:540px;color:var(--line);font-size:24px;transform:rotate(5.8deg)}
+.categoryArea{position:absolute;left:4.93%;right:4.65%;top:712px;text-align:center}
 .categoryArea>p{margin:0 0 16px;font-size:18px}
-.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:24px}
+.categoryCarousel{display:grid;grid-template-columns:32px minmax(0,1fr) 32px;align-items:center;gap:20px}
+.categories{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:24px;overflow:hidden;scroll-snap-type:x proximity}
+.categoryNav{width:32px;height:32px;padding:0;border:0;background:transparent;color:var(--gold);font:400 42px/26px 'Cormorant Garamond';cursor:pointer}
 .categoryCard{height:145px;padding:0;overflow:hidden;border:0;border-radius:12px;background:var(--cream);color:var(--dark);cursor:pointer;text-align:left}
-.categoryImage{display:block;height:100px;background:url('/assets/categories.png') center/600% auto no-repeat}
+.categoryImage{display:block;width:100%;height:100px;object-fit:cover;transition:transform .4s cubic-bezier(.22,.61,.36,1)}
+.categoryCard:hover .categoryImage{transform:scale(1.05)}
 .categoryCard>span:last-child{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;font-size:18px;line-height:28px}
 .categoryCard b{color:var(--gold);font-size:24px;font-weight:400}
 
@@ -130,6 +139,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 
 @keyframes heroBackgroundIn{from{opacity:0}to{opacity:1}}
 @keyframes scrollCue{0%,100%{transform:translateY(0);opacity:1}45%{transform:translateY(9px);opacity:.58}70%{transform:translateY(3px);opacity:.88}}
+@keyframes productInfoIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
 @media(max-width:800px){
   .hero{height:100svh}
@@ -153,9 +163,10 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
   .sideCopy{position:absolute;left:24px;right:24px;bottom:7svh;width:auto;text-align:left;font-size:15px;line-height:22px}
   .perfect{right:10%;top:66%}.authentic{left:32%;top:82%;width:270px;height:44px;gap:8px;font-size:28px}.handArrow{flex-basis:74px;width:74px;height:42px}
   .service:after{display:none}
-  .productHero{position:relative;inset:auto;transform:none;width:100%;height:260px;margin-top:40px}
-  .productCard{position:relative;inset:auto;width:100%;margin-top:20px}
-  .categoryArea{position:relative;inset:auto;margin-top:28px}.categories{display:flex;overflow:auto;gap:12px}.categoryCard{min-width:170px}
+  .productStage{position:relative;inset:auto;transform:none;width:100%;height:260px;margin-top:40px}
+  .productInfoCard{position:relative;inset:auto;width:100%;margin-top:20px}
+  .flavor{display:none}
+  .categoryArea{position:relative;inset:auto;margin-top:28px}.categoryCarousel{grid-template-columns:28px minmax(0,1fr) 28px;gap:8px}.categories{display:flex;overflow:auto;gap:12px}.categoryCard{min-width:170px}
   .quality .copy{position:relative;inset:auto;width:100%}.quality>img{position:relative;inset:auto;width:100%;height:clamp(150px,24svh,240px)}
   .values{position:relative;inset:auto;transform:none;width:100%;grid-template-columns:1fr;margin-top:24px;gap:12px;padding:14px}
   .catalog .copy{position:relative;inset:auto;width:100%}.catalog>img{position:relative;inset:auto;width:100%;height:300px;transform:none}
