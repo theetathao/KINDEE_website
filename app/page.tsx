@@ -168,7 +168,7 @@ export default function Home() {
             <em className="note authentic"><span className="handArrow" aria-hidden="true"><img src={`${A}handwriting-arrow.svg`} alt="" /></span><span className="handText">Authentic Taste</span></em>
             <div className="copy right">
               <div className="copyLead"><span>02.</span><h2>It begins<br/>with a taste.</h2></div>
-              <div className="copyBody"><p>Bringing the authentic flavors and culinary heritage of Southeast Asia to every table.</p><a className="goldBtn" href="#products">Explore Now <Arrow /></a></div>
+              <div className="copyBody"><p>Bringing the authentic flavors and culinary heritage of Southeast Asia to every table.</p><a className="goldBtn" href="#products">Explore Recipes <Arrow /></a></div>
             </div>
           </div>
         </div>
