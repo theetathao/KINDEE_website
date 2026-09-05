@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type MouseEvent } from 'react';
 
 const A = '/assets/';
 function Arrow() { return <span aria-hidden="true">→</span>; }
@@ -23,12 +23,24 @@ const PRODUCT_CATEGORIES = [
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
+  const [tooltipPosition, setTooltipPosition] = useState<{ x: number; y: number } | null>(null);
   const storyRef = useRef<HTMLElement>(null);
   const storyStageRef = useRef<HTMLDivElement>(null);
+  const productsRef = useRef<HTMLElement>(null);
   const categoryTrackRef = useRef<HTMLDivElement>(null);
 
   const scrollCategories = (direction: number) => {
     categoryTrackRef.current?.scrollBy({ left: direction * 420, behavior: 'smooth' });
+  };
+
+  const moveProductTooltip = (event: MouseEvent<HTMLDivElement>) => {
+    const section = productsRef.current;
+    if (!section) return;
+    const rect = section.getBoundingClientRect();
+    setTooltipPosition({
+      x: Math.min(Math.max(16, event.clientX - rect.left + 18), rect.width - 214),
+      y: Math.min(Math.max(150, event.clientY - rect.top + 18), rect.height - 132),
+    });
   };
 
   useEffect(() => {
@@ -112,6 +124,9 @@ export default function Home() {
   return (
     <main>
       <section className="hero" id="home">
+        <video className="heroVideo" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+          <source src={`${A}hero-video.mp4`} type="video/mp4" />
+        </video>
         <header className={`nav ${menuOpen ? 'navOpen' : ''}`}>
           <a className="outlineBtn" href="#catalog">Download Catalog</a>
           <a href="#home" aria-label="Kin Dee home"><img className="logo" src={`${A}logo.png`} alt="Kin Dee" /></a>
@@ -158,15 +173,16 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="products" id="products">
+      <section className="products" id="products" ref={productsRef}>
         <div className="productIntro"><div className="sectionHeadingReveal" data-reveal><span>03.</span><h2>Feature Products</h2></div><p className="revealDelay1" data-reveal>From sauces and condiments to coconut milk, rice and ready-to-cook essentials, Kin Dee brings together a wide range of Southeast Asian food products.</p></div>
-        <div className="productStage revealDelay1" data-reveal onMouseLeave={() => setHoveredProduct(null)}>
+        <div className="productStage revealDelay1" data-reveal onMouseMove={moveProductTooltip} onMouseLeave={() => { setHoveredProduct(null); setTooltipPosition(null); }}>
           <img className="productHero" src={`${A}product-main.png`} alt="Three Kin Dee sauces: Jim Jaew, Sukiyaki and Chili Lime" />
+          {FEATURED_PRODUCTS.map((product, index) => <img key={`${product.name}-zoom`} className={`bottleZoom bottleZoom${index + 1} ${hoveredProduct === index ? 'is-active' : ''}`} src={`${A}product-main.png`} alt="" aria-hidden="true" />)}
           <div className="bottleTargets">
             {FEATURED_PRODUCTS.map((product, index) => <button key={product.name} className={`bottleTarget bottleTarget${index + 1}`} aria-label={`Show details for ${product.name}`} onMouseEnter={() => setHoveredProduct(index)} onFocus={() => setHoveredProduct(index)} onBlur={() => setHoveredProduct(null)} />)}
           </div>
         </div>
-        {hoveredProduct !== null && <div className="productInfoCard" role="status"><strong>{FEATURED_PRODUCTS[hoveredProduct].name}<br/><span>({FEATURED_PRODUCTS[hoveredProduct].detail})</span></strong><small>{FEATURED_PRODUCTS[hoveredProduct].size}</small></div>}
+        {hoveredProduct !== null && <div className="productInfoCard" role="status" style={tooltipPosition ? { left: tooltipPosition.x, top: tooltipPosition.y } : undefined}><strong>{FEATURED_PRODUCTS[hoveredProduct].name}<br/><span>({FEATURED_PRODUCTS[hoveredProduct].detail})</span></strong><small>{FEATURED_PRODUCTS[hoveredProduct].size}</small></div>}
         <em className="note flavor revealDelay2" data-reveal>The Flavor Behind Every Dish.</em>
         <div className="categoryArea revealDelay2" data-reveal><p>Sort by Category</p><div className="categoryCarousel"><button className="categoryNav" type="button" onClick={() => scrollCategories(-1)} aria-label="Previous categories">‹</button><div className="categories" ref={categoryTrackRef}>{PRODUCT_CATEGORIES.map(category => <button className="categoryCard" key={category.name}><img className="categoryImage" src={`${A}${category.image}`} alt=""/><span>{category.name}<b>›</b></span></button>)}</div><button className="categoryNav" type="button" onClick={() => scrollCategories(1)} aria-label="Next categories">›</button></div></div>
       </section>

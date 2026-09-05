@@ -13,7 +13,8 @@ section{position:relative;overflow:hidden;width:100%}
 .goldBtn{background:var(--gold);color:var(--dark)}
 
 .hero{height:100svh;background:#111}
-.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.82),transparent 48%),linear-gradient(rgba(37,37,37,.4),rgba(37,37,37,.4)),url('/assets/hero-overlay.png') center/cover,url('/assets/hero.png') center/cover;opacity:1}
+.heroVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::before{content:'';position:absolute;z-index:1;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.82),transparent 48%),linear-gradient(rgba(37,37,37,.4),rgba(37,37,37,.4));pointer-events:none}
 .nav{position:fixed;z-index:50;top:40px;left:50%;transform:translateX(-50%);width:80%;height:72px;padding:4px 32px;display:grid;grid-template-columns:1fr 180px 1fr;align-items:center;border-radius:20px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);box-shadow:6px 13px 20px rgba(85,53,53,.4);transition:height .28s ease}
 .nav>.outlineBtn{justify-self:start}
 .nav>a[aria-label="Kin Dee home"]{display:grid;place-items:center;height:64px}
@@ -32,7 +33,7 @@ section{position:relative;overflow:hidden;width:100%}
 .mainMenu a{display:flex;align-items:center;justify-content:flex-end;height:62px;border-bottom:1px solid rgba(216,212,204,.45);font:400 40px/52px 'Cormorant Garamond';letter-spacing:.4px;text-transform:uppercase}
 .mainMenu a:last-child{border:0}
 .mainMenu a.active{color:var(--gold);font-weight:700}
-.heroCopy{position:absolute;z-index:1;left:8.35%;bottom:clamp(40px,8svh,80px);color:#fff}
+.heroCopy{position:absolute;z-index:2;left:8.35%;bottom:clamp(40px,8svh,80px);color:#fff}
 .heroCopy h1{width:620px;max-width:78vw;margin:0 0 clamp(24px,4svh,40px);font:500 56px/60px 'Cormorant Garamond';letter-spacing:-.56px;text-transform:uppercase}
 .heroCopy img{display:block;width:40px;height:40px}
 .scrollCue{display:block;width:40px;height:40px}
@@ -66,21 +67,26 @@ section{position:relative;overflow:hidden;width:100%}
 .handText{display:block;white-space:nowrap;transform:rotate(4.01deg)}
 .storyStage[data-reduced-motion="true"] .storySpoon,.storyStage[data-reduced-motion="true"] .storyBowl,.storyStage[data-reduced-motion="true"] .copyLead,.storyStage[data-reduced-motion="true"] .copyBody,.storyStage[data-reduced-motion="true"] .sideCopy{transition:none;--spoon-rise:0px;--passion-lead-y:0px;--passion-body-y:0px;--taste-lead-y:0px;--taste-body-y:0px}
 
-.products{height:900px;background:linear-gradient(rgba(119,115,110,.9),rgba(119,115,110,.9)),url('/assets/products-bg.png') center/cover;color:#fff}
+.products{height:980px;background:linear-gradient(rgba(119,115,110,.9),rgba(119,115,110,.9)),url('/assets/products-bg.png') center/cover;color:#fff}
 .productIntro{position:absolute;z-index:3;top:101px;left:50%;transform:translateX(-50%);width:792px;max-width:80%;text-align:center}
 .productIntro span{color:var(--gold)}
 .productIntro h2{margin:12px 0 4px;font:700 48px/52px 'Cormorant Garamond'}
 .productIntro p{margin:0;color:var(--line);font-size:16px;line-height:24px}
 .productStage{position:absolute;z-index:2;left:50%;top:calc(50% + 15px);transform:translate(-50%,-50%);width:703px;height:396px}
 .productHero{display:block;width:100%;height:100%;object-fit:contain}
+.bottleZoom{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none;transform:scale(1);transition:opacity .22s ease,transform .42s cubic-bezier(.22,.61,.36,1)}
+.bottleZoom.is-active{opacity:1;transform:scale(1.065)}
+.bottleZoom1{clip-path:polygon(27% 3%,42% 3%,42% 83%,27% 83%);transform-origin:34.5% 48%}
+.bottleZoom2{clip-path:polygon(42% 3%,57% 3%,57% 83%,42% 83%);transform-origin:49.5% 48%}
+.bottleZoom3{clip-path:polygon(56.5% 3%,71.5% 3%,71.5% 83%,56.5% 83%);transform-origin:64% 48%}
 .bottleTargets{position:absolute;inset:0}
-.bottleTarget{position:absolute;top:3%;width:19%;height:82%;padding:0;border:0;background:transparent;cursor:pointer;border-radius:40% 40% 18% 18%}
+.bottleTarget{position:absolute;z-index:2;top:3%;width:15%;height:80%;padding:0;border:0;background:transparent;cursor:pointer;border-radius:40% 40% 18% 18%}
 .bottleTarget:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
-.bottleTarget1{left:22%}.bottleTarget2{left:41%}.bottleTarget3{left:60%}
-.productInfoCard{position:absolute;z-index:4;left:15.7%;top:394px;width:280px;padding:20px;text-align:center;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);animation:productInfoIn .28s cubic-bezier(.22,.61,.36,1) both}
-.productInfoCard strong{display:block;font:700 28px/34px 'Cormorant Garamond'}
+.bottleTarget1{left:27%}.bottleTarget2{left:42%}.bottleTarget3{left:56.5%}
+.productInfoCard{position:absolute;z-index:4;left:15.7%;top:394px;width:196px;padding:14px;pointer-events:none;text-align:center;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);animation:productInfoIn .28s cubic-bezier(.22,.61,.36,1) both}
+.productInfoCard strong{display:block;font:700 20px/24px 'Cormorant Garamond'}
 .productInfoCard strong span{font:inherit}
-.productInfoCard small{display:block;margin-top:8px;color:var(--line);font-size:18px;line-height:28px}
+.productInfoCard small{display:block;margin-top:6px;color:var(--line);font-size:13px;line-height:20px}
 .flavor{position:absolute;right:10%;top:540px;color:var(--line);font-size:24px;transform:rotate(5.8deg)}
 .categoryArea{position:absolute;left:4.93%;right:4.65%;top:712px;text-align:center}
 .categoryArea>p{margin:0 0 16px;font-size:18px}
@@ -129,7 +135,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 .socials img{width:32px;height:32px;object-fit:contain}
 
 @media(prefers-reduced-motion:no-preference){
-  .hero::before{animation:heroBackgroundIn 1.4s cubic-bezier(.22,.61,.36,1) both}
+  .heroVideo{animation:heroBackgroundIn 1.4s cubic-bezier(.22,.61,.36,1) both}
   .scrollCue{animation:scrollCue 1.65s cubic-bezier(.45,0,.25,1) 1.15s infinite}
   [data-reveal]{opacity:0;translate:0 36px;transition:opacity .9s cubic-bezier(.22,.61,.36,1),translate .9s cubic-bezier(.22,.61,.36,1)}
   [data-reveal].is-visible{opacity:1;translate:0 0}
