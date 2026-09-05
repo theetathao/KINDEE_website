@@ -38,7 +38,7 @@ section{position:relative;overflow:hidden;width:100%}
 .heroCopy img{display:block;width:40px;height:40px}
 .scrollCue{display:block;width:40px;height:40px}
 
-.storySequence{height:600svh;overflow:visible;background:var(--cream)}
+.storySequence{height:360svh;overflow:visible;background:var(--cream)}
 .storyStage{position:sticky;top:0;width:100%;height:100svh;overflow:hidden;background:var(--cream);--spoon-opacity:0;--spoon-rise:58svh;--spoon-scale:1;--bowl-opacity:0;--bowl-scale:.45;--bowl-left:50%;--passion-lead:0;--passion-lead-y:42px;--passion-body:0;--passion-body-y:42px;--passion-note:0;--taste-lead:0;--taste-lead-y:42px;--taste-body:0;--taste-body-y:42px;--taste-note:0}
 .storyLayer{position:absolute;inset:0;z-index:2;pointer-events:none}
 .storyLayer a{pointer-events:auto}
@@ -208,7 +208,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
   .heroCopy{left:24px;bottom:44px}.heroCopy h1{max-width:88vw;font-size:42px;line-height:44px}
   .products,.catalog{height:auto;min-height:720px;padding:72px 24px}
   .quality,.service{height:100svh;min-height:0;padding:clamp(32px,6svh,56px) 24px}
-  .storySequence{height:600svh}.storyStage{height:100svh}
+  .storySequence{height:360svh}.storyStage{height:100svh}
   .copy.left,.copy.right,.serviceCopy,.productIntro{position:relative;inset:auto;transform:none;width:100%;max-width:none;text-align:left;align-items:flex-start}
   .copy,.serviceCopy{gap:20px}
   .copy h2,.serviceCopy h2{font-size:42px;line-height:44px}.copy>span,.copyLead>span,.serviceCopy>span,.productIntro>span,.sectionHeadingReveal>span{font-size:34px}
