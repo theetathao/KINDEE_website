@@ -128,7 +128,7 @@ section{position:relative;overflow:hidden;width:100%}
 .ingredientBasil .ingredientLabel{right:82%;top:48%}
 .selected{position:absolute;right:27%;bottom:13svh;color:var(--cream);font-size:29px;line-height:31px}
 
-.service{isolation:isolate;height:100svh;background:url('/assets/farm.png') 3% 92%/160% auto no-repeat;color:#fff}
+.service{isolation:isolate;height:100svh;min-height:900px;background:url('/assets/farm.png') 3% 92%/160% auto no-repeat;color:#fff}
 .service:before{content:'';position:absolute;z-index:0;inset:0;background:linear-gradient(90deg,rgba(16,15,11,.22) 0%,rgba(18,17,13,.29) 44%,rgba(20,20,18,.78) 100%),rgba(8,8,6,.18)}
 .service>*{z-index:1}
 .serviceCopy{position:absolute;right:8.2%;top:clamp(132px,17.5svh,210px);width:487px;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:clamp(28px,4svh,48px)}
@@ -238,7 +238,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
   .mainMenu a{height:clamp(54px,10svh,72px);font-size:clamp(30px,9vw,40px)}
   .heroCopy{left:24px;bottom:44px}.heroCopy h1{max-width:88vw;font-size:42px;line-height:44px}
   .products,.catalog{height:auto;min-height:720px;padding:72px 24px}
-  .quality{height:calc(100svh + 64px);min-height:0;padding:clamp(32px,6svh,56px) 24px}.service{height:100svh;min-height:0;padding:clamp(32px,6svh,56px) 24px}
+  .quality{height:calc(100svh + 64px);min-height:0;padding:clamp(32px,6svh,56px) 24px}.service{height:auto;min-height:100svh;padding:clamp(32px,6svh,56px) 24px}
   .storySequence{height:360svh}.storyStage{height:100svh}
   .copy.left,.copy.right,.serviceCopy,.productIntro{position:relative;inset:auto;transform:none;width:100%;max-width:none;text-align:left;align-items:flex-start}
   .copy,.serviceCopy{gap:20px}
