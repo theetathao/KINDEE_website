@@ -101,20 +101,22 @@ section{position:relative;overflow:hidden;width:100%}
 
 .quality{height:100svh;background:var(--taupe)}
 .copy.light{color:var(--cream)}
-.quality .copy{top:clamp(64px,14svh,133px);width:510px}
-.quality>img{position:absolute;right:1.5%;top:clamp(24px,5svh,45px);width:48%;height:min(86svh,650px);object-fit:contain}
-.selected{position:absolute;right:28.2%;bottom:114px;color:var(--cream)}
+.quality .copy{top:clamp(150px,20svh,230px);width:510px;gap:clamp(28px,4.5svh,56px)}
+.quality .sectionHeadingReveal{gap:clamp(24px,4svh,48px)}
+.quality>img{position:absolute;right:1.5%;top:12svh;width:50%;height:72svh;object-fit:contain}
+.selected{position:absolute;right:27%;bottom:13svh;color:var(--cream)}
 
 .service{height:100svh;background:linear-gradient(90deg,transparent,rgba(37,37,37,.8)),url('/assets/farm.png') center/cover;color:#fff}
-.serviceCopy{position:absolute;right:8.2%;top:clamp(56px,12svh,117px);width:487px;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:clamp(20px,3svh,32px)}
+.serviceCopy{position:absolute;right:8.2%;top:clamp(150px,18svh,220px);width:487px;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:clamp(28px,4svh,48px)}
+.serviceCopy .sectionHeadingReveal{gap:clamp(24px,3.5svh,42px)}
 .serviceCopy>span{color:var(--gold)}
 .serviceCopy h2{margin:0}
-.values{position:absolute;left:50%;bottom:clamp(28px,8svh,100px);transform:translateX(-50%);width:83.5%;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:20px;border:1px solid var(--gold);border-radius:16px;background:rgba(0,0,0,.4);backdrop-filter:blur(10px)}
+.values{position:absolute;left:50%;bottom:clamp(40px,7.5svh,108px);transform:translateX(-50%);width:83.5%;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:20px;border:1px solid var(--gold);border-radius:16px;background:rgba(0,0,0,.4);backdrop-filter:blur(10px)}
 .values article{display:flex;gap:20px}
 .values img{width:40px;height:40px}
 .values h3{margin:0 0 8px;font:700 28px/34px 'Cormorant Garamond'}
 .values p{margin:0;font-size:16px;line-height:24px}
-.service:after{content:'It all begins here';position:absolute;left:32%;top:105px;color:var(--line);font:700 42px/44px 'Caveat';transform:rotate(7.5deg)}
+.service:after{content:'It all begins here';position:absolute;left:32%;top:18svh;color:var(--line);font:700 42px/44px 'Caveat';transform:rotate(7.5deg)}
 
 .catalog{height:560px;background:var(--gray)}
 .catalog .copy{top:83px;width:484px;gap:32px}
