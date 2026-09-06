@@ -211,8 +211,8 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 .condimentGrid.listView{grid-template-columns:1fr;gap:12px}
 .listView .condimentCard{display:grid;height:140px;grid-template-columns:180px minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:24px;align-items:start}
 .listView .condimentCard>div{grid-row:1/3;height:140px}
-.listView .condimentCard h3{grid-column:2;min-height:0;padding:24px 20px 0}
-.listView .condimentCard p{grid-column:2;padding:8px 20px 20px}
+.listView .condimentCard h3{grid-column:2;grid-row:1;min-height:0;padding:24px 20px 0}
+.listView .condimentCard p{grid-column:2;grid-row:2;padding:8px 20px 20px}
 .condimentCard{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:#fff;transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s ease}
 .condimentCard:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(37,37,37,.12)}
 .condimentCard>div{height:383px;background:#f3f3f1;overflow:hidden}
