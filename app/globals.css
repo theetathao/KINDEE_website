@@ -15,8 +15,8 @@ section{position:relative;overflow:hidden;width:100%}
 .hero{height:100svh;background:#111}
 .heroVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero::before{content:'';position:absolute;z-index:1;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.82),transparent 48%),linear-gradient(rgba(37,37,37,.4),rgba(37,37,37,.4));pointer-events:none}
-.nav{position:fixed;z-index:50;top:40px;left:50%;transform:translateX(-50%);width:80%;height:72px;padding:4px 32px;display:grid;grid-template-columns:1fr 180px 1fr;align-items:center;border-radius:20px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);box-shadow:6px 13px 20px rgba(85,53,53,.4);transition:height .28s ease}
-.nav>.outlineBtn{justify-self:start}
+.nav{position:fixed;z-index:50;top:40px;left:50%;transform:translateX(-50%);width:80%;height:72px;padding:4px 32px;display:grid;grid-template-columns:1fr 180px 1fr;align-items:center;border-radius:12px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);box-shadow:6px 13px 20px rgba(85,53,53,.4);transition:height .28s ease}
+.nav>.outlineBtn{justify-self:start;border-width:2px}
 .nav>a[aria-label="Kin Dee home"]{display:grid;place-items:center;height:64px}
 .logo{display:block;width:123px;height:80px;object-fit:contain;transform:translateY(-7px)}
 .menuButton{justify-self:end;width:40px;height:40px;padding:0;border:0;background:transparent;cursor:pointer}
