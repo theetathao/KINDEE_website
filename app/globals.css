@@ -180,7 +180,8 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 .condimentCategories{position:absolute;z-index:2;left:50%;bottom:50px;transform:translateX(-50%);width:min(1198px,83%);display:grid;grid-template-columns:repeat(6,1fr);gap:24px}
 .condimentCategories a{position:relative;height:92px;overflow:hidden;border:1px solid transparent;border-radius:12px;display:grid;place-items:center;color:#fff;font:700 18px/28px 'Cormorant Garamond'}
 .condimentCategories a:after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.45)}
-.condimentCategories a.isCurrent{border-color:var(--gold)}
+.condimentCategories a.isCurrent{border:3px solid var(--gold)}
+.condimentCategories a.isCurrent span{color:var(--gold);font-size:21px;line-height:30px}
 .condimentCategories img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
 .condimentCategories a:hover img{transform:scale(1.07)}
 .condimentCategories span{position:relative;z-index:1;text-align:center}
@@ -226,6 +227,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 
 @media(prefers-reduced-motion:no-preference){
   .heroVideo{animation:heroBackgroundIn 1.4s cubic-bezier(.22,.61,.36,1) both}
+  .condimentHeroImage{animation:condimentHeroBackgroundIn 1.25s cubic-bezier(.22,.61,.36,1) both}
   .scrollCue{animation:scrollCue 1.65s cubic-bezier(.45,0,.25,1) 1.15s infinite}
   [data-reveal]{opacity:0;translate:0 36px;transition:opacity .9s cubic-bezier(.22,.61,.36,1),translate .9s cubic-bezier(.22,.61,.36,1)}
   [data-reveal].is-visible{opacity:1;translate:0 0}
@@ -234,6 +236,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 }
 
 @keyframes heroBackgroundIn{from{opacity:0}to{opacity:1}}
+@keyframes condimentHeroBackgroundIn{from{opacity:0}to{opacity:1}}
 @keyframes scrollCue{0%,100%{transform:translateY(0);opacity:1}45%{transform:translateY(9px);opacity:.58}70%{transform:translateY(3px);opacity:.88}}
 @keyframes productInfoIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 @keyframes ingredientEnter{from{opacity:0;transform:translateY(28px) rotate(-2deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
