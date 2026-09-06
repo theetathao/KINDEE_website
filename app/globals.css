@@ -209,7 +209,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 .viewIcons span:first-child{color:var(--dark)}
 .condimentGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .condimentGrid.listView{grid-template-columns:1fr;gap:12px}
-.listView .condimentCard{display:grid;grid-template-columns:180px minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:24px;align-items:start}
+.listView .condimentCard{display:grid;height:140px;grid-template-columns:180px minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:24px;align-items:start}
 .listView .condimentCard>div{grid-row:1/3;height:140px}
 .listView .condimentCard h3{grid-column:2;min-height:0;padding:24px 20px 0}
 .listView .condimentCard p{grid-column:2;padding:8px 20px 20px}
