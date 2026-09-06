@@ -1,16 +1,24 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 
 const A = '/assets/';
 
 const categories = [
-  ['All Products', 'category-ready-to-cook.png', '/#products'],
-  ['Honey', 'category-honey.png', '/#products'],
+  ['All Products', 'category-ready-to-cook.png', 'https://www.thekindeeco.com/products/'],
+  ['Honey', 'category-honey.png', 'https://www.thekindeeco.com/product_category/honey/'],
   ['Condiments', 'category-condiments.png', '/products/condiments'],
-  ['Ready to cook', 'category-ready-to-cook.png', '/#products'],
-  ['Snacks', 'category-snacks.png', '/#products'],
-  ['Coconut Milk', 'category-coconut-milk.png', '/#products'],
+  ['Ready to eat', 'category-ready-to-cook.png', 'https://www.thekindeeco.com/product_category/ready-to-eat/'],
+  ['Ready to cook', 'category-ready-to-cook.png', 'https://www.thekindeeco.com/product_category/ready-to-cook/'],
+  ['Snacks', 'category-snacks.png', 'https://www.thekindeeco.com/product_category/snacks/'],
+  ['Coconut Milk', 'category-coconut-milk.png', 'https://www.thekindeeco.com/product_category/coconut-milk/'],
+  ['Rice', 'category-rice.png', 'https://www.thekindeeco.com/product_category/rice/'],
+  ['Dried Fruits', 'category-honey.png', 'https://www.thekindeeco.com/product_category/dried-fruits/'],
+  ['Beverages', 'category-coconut-milk.png', 'https://www.thekindeeco.com/product_category/beverages/'],
+  ['Frozen Foods', 'category-ready-to-cook.png', 'https://www.thekindeeco.com/product_category/frozen-foods/'],
+  ['Accessory Items', 'category-condiments.png', 'https://www.thekindeeco.com/product_category/accessory-items/'],
+  ['Exclusive Partner', 'product-main.png', 'https://www.thekindeeco.com/product_category/exclusive-partner/'],
+  ["Australia's products", 'categories.png', 'https://www.thekindeeco.com/product_category/australia/'],
 ];
 
 const products = [
@@ -33,7 +41,12 @@ export default function CondimentPage() {
   const [query, setQuery] = useState('');
   const [visible, setVisible] = useState(9);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const categoryTrackRef = useRef<HTMLElement>(null);
   const filtered = useMemo(() => products.map((product, index) => ({ product, index })).filter(({ product }) => product[0].toLowerCase().includes(query.toLowerCase())), [query]);
+  const scrollCategories = (direction: number) => {
+    const track = categoryTrackRef.current;
+    if (track) track.scrollBy({ left: direction * track.clientWidth * 0.82, behavior: 'smooth' });
+  };
 
   return (
     <main className="condimentPage">
@@ -50,7 +63,11 @@ export default function CondimentPage() {
           </div>}
         </header>
         <div className="condimentHeroCopy"><span>Products</span><img className="condimentHeroLine" src={`${A}condiments/hero-line.svg`} alt="" /><h1>Condiment</h1><p>Authentic sauces, pastes and seasonings crafted from quality ingredients to bring the true taste of Southeast Asia to your table.</p></div>
-        <nav className="condimentCategories" aria-label="Product categories">{categories.map(([name,image,href]) => <a href={href} className={name === 'Condiments' ? 'isCurrent' : ''} key={name}><img src={`${A}${image}`} alt="" /><span>{name}</span></a>)}</nav>
+        <div className="condimentCategoryCarousel">
+          <button type="button" onClick={() => scrollCategories(-1)} aria-label="Previous product categories">‹</button>
+          <nav className="condimentCategories" ref={categoryTrackRef} aria-label="Product categories">{categories.map(([name,image,href]) => <a href={href} className={name === 'Condiments' ? 'isCurrent' : ''} key={name}><img src={`${A}${image}`} alt="" /><span>{name}</span></a>)}</nav>
+          <button type="button" onClick={() => scrollCategories(1)} aria-label="Next product categories">›</button>
+        </div>
       </section>
 
       <section className="condimentListing">
