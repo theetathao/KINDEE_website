@@ -195,7 +195,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 .productSearch img{width:16px;height:16px}
 .productSearch input{width:100%;border:0;outline:0;background:transparent;font:16px/24px 'DM Sans';color:#6c6c6c}
 .filterButtons{display:flex;align-items:center;gap:15px}
-.filterButtons button{height:40px;padding:8px 12px;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;text-transform:uppercase;font-size:16px;line-height:24px;cursor:pointer}
+.filterButtons button{height:40px;padding:8px 12px;display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:8px;background:#fff;text-transform:uppercase;font-size:16px;line-height:24px;cursor:pointer}
 .filterButtons img{width:24px;height:24px}
 .listingHeader{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px}
 .listingHeader h2{margin:0;font:700 24px/30px 'Cormorant Garamond'}
