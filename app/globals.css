@@ -228,7 +228,7 @@ footer{height:470px;padding:80px 8.5% 40px;background:var(--dark);color:#ecf9fa}
 .condimentCta h2{margin:0;font:700 56px/60px 'Cormorant Garamond'}
 .condimentCta p{margin:0;font-size:18px;line-height:28px}
 .condimentCta>img{position:absolute;right:-8%;top:-40px;width:62%;height:640px;object-fit:contain;transform:rotate(-2.43deg)}
-.condimentCta em{position:absolute;z-index:2;left:42%;top:185px;width:210px;color:var(--taupe);font:700 30px/32px 'Caveat';transform:rotate(-8deg)}
+.condimentCta em{position:absolute;z-index:2;left:39.5%;top:430px;width:210px;color:var(--taupe);font:700 30px/32px 'Caveat';transform:rotate(-8deg)}
 
 @media(prefers-reduced-motion:no-preference){
   .heroVideo{animation:heroBackgroundIn 1.4s cubic-bezier(.22,.61,.36,1) both}
