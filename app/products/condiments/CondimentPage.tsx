@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 const A = '/assets/';
 
@@ -48,11 +48,28 @@ export default function CondimentPage() {
     if (track) track.scrollBy({ left: direction * track.clientWidth * 0.82, behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    const items = Array.from(document.querySelectorAll<HTMLElement>('.condimentPage [data-reveal]'));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      items.forEach(item => item.classList.add('is-visible'));
+      return;
+    }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -3% 0px' });
+    items.forEach(item => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="condimentPage">
       <section className="condimentHero">
         <img className="condimentHeroImage" src={`${A}condiments/hero.png`} alt="Kin Dee condiments and fresh Thai ingredients" />
-        <header className={`nav ${menuOpen ? 'navOpen' : ''}`}>
+        <header className={`nav ${menuOpen ? 'navOpen' : ''}`} data-reveal>
           <a className="outlineBtn" href="/#catalog">Download Catalog</a>
           <a href="/" aria-label="Kin Dee home"><img className="logo" src={`${A}logo.png`} alt="Kin Dee" /></a>
           <button className="menuButton" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}><img src={`${A}${menuOpen ? 'close.svg' : 'menu.svg'}`} alt="" /></button>
@@ -62,8 +79,8 @@ export default function CondimentPage() {
             <nav className="mainMenu" aria-label="Main navigation"><a href="/">Home</a><a href="/#about">About</a><a className="active" href="/#products">Product</a><a href="/#service">Services</a><a href="#">Recipes</a><a href="#">Contact</a></nav>
           </div>}
         </header>
-        <div className="condimentHeroCopy"><span>Products</span><img className="condimentHeroLine" src={`${A}condiments/hero-line.svg`} alt="" /><h1>Condiment</h1><p>Authentic sauces, pastes and seasonings crafted from quality ingredients to bring the true taste of Southeast Asia to your table.</p></div>
-        <div className="condimentCategoryCarousel">
+        <div className="condimentHeroCopy revealDelay1" data-reveal><span>Products</span><img className="condimentHeroLine" src={`${A}condiments/hero-line.svg`} alt="" /><h1>Condiment</h1><p>Authentic sauces, pastes and seasonings crafted from quality ingredients to bring the true taste of Southeast Asia to your table.</p></div>
+        <div className="condimentCategoryCarousel revealDelay2" data-reveal>
           <button type="button" onClick={() => scrollCategories(-1)} aria-label="Previous product categories">‹</button>
           <nav className="condimentCategories" ref={categoryTrackRef} aria-label="Product categories">{categories.map(([name,image,href]) => <a href={href} className={name === 'Condiments' ? 'isCurrent' : ''} key={name}><img src={`${A}${image}`} alt="" /><span>{name}</span></a>)}</nav>
           <button type="button" onClick={() => scrollCategories(1)} aria-label="Next product categories">›</button>
@@ -71,17 +88,17 @@ export default function CondimentPage() {
       </section>
 
       <section className="condimentListing">
-        <div className="productTools">
+        <div className="productTools" data-reveal>
           <label className="productSearch"><img src={`${A}condiments/search.svg`} alt="" /><input value={query} onChange={event => { setQuery(event.target.value); setVisible(9); }} placeholder="Search" aria-label="Search condiments" /></label>
           <div className="filterButtons" aria-label="Product filters">{['Product Type','Dietary','Certification','Sort By'].map(label => <button key={label}>{label}<img src={`${A}condiments/caret-down.svg`} alt="" /></button>)}</div>
         </div>
-        <div className="listingHeader"><div><h2>All Condiments</h2><p>Showing {Math.min(visible, filtered.length)} of {filtered.length} products</p></div><div className="viewIcons" aria-label="View options"><span>VIEW AS</span><div><button className={viewMode === 'grid' ? 'active' : ''} type="button" onClick={() => setViewMode('grid')} aria-label="Grid view" aria-pressed={viewMode === 'grid'}><img src={`${A}condiments/view-grid.svg`} alt="" /></button><button className={viewMode === 'list' ? 'active' : ''} type="button" onClick={() => setViewMode('list')} aria-label="List view" aria-pressed={viewMode === 'list'}><img src={`${A}condiments/view-list.svg`} alt="" /></button></div></div></div>
-        {filtered.length ? <div className={`condimentGrid ${viewMode === 'list' ? 'listView' : ''}`}>{filtered.slice(0, visible).map(({ product, index }) => <article className="condimentCard" key={product[0]}><div><img src={`${A}condiments/product-${String(index + 1).padStart(2, '0')}.png`} alt={product[0]} /></div><h3>{product[0]}</h3><p>{product[1]}</p></article>)}</div> : <p className="noProducts">No condiments match your search.</p>}
-        {visible < filtered.length && <button className="loadMore" onClick={() => setVisible(products.length)}>Load More</button>}
+        <div className="listingHeader revealDelay1" data-reveal><div><h2>All Condiments</h2><p>Showing {Math.min(visible, filtered.length)} of {filtered.length} products</p></div><div className="viewIcons" aria-label="View options"><span>VIEW AS</span><div><button className={viewMode === 'grid' ? 'active' : ''} type="button" onClick={() => setViewMode('grid')} aria-label="Grid view" aria-pressed={viewMode === 'grid'}><img src={`${A}condiments/view-grid.svg`} alt="" /></button><button className={viewMode === 'list' ? 'active' : ''} type="button" onClick={() => setViewMode('list')} aria-label="List view" aria-pressed={viewMode === 'list'}><img src={`${A}condiments/view-list.svg`} alt="" /></button></div></div></div>
+        {filtered.length ? <div className={`condimentGrid revealDelay2 ${viewMode === 'list' ? 'listView' : ''}`} data-reveal>{filtered.slice(0, visible).map(({ product, index }) => <article className="condimentCard" key={product[0]}><div><img src={`${A}condiments/product-${String(index + 1).padStart(2, '0')}.png`} alt={product[0]} /></div><h3>{product[0]}</h3><p>{product[1]}</p></article>)}</div> : <p className="noProducts" data-reveal>No condiments match your search.</p>}
+        {visible < filtered.length && <button className="loadMore" data-reveal onClick={() => setVisible(products.length)}>Load More</button>}
       </section>
 
-      <section className="condimentCta" id="catalog"><div><h2>Bring More to<br/>the Table.</h2><p>Explore Kin Dee’s complete range of Southeast Asian food products, from everyday essentials to authentic regional flavors.</p><a className="outlineBtn" href="#">Download Catalog</a></div><em>there’s always more to discover</em><img src={`${A}condiments/catalog-cta.png`} alt="Kin Dee catalog with a curry bowl and ingredients" /></section>
-      <footer><div className="footerMain"><div><img className="footerLogo" src={`${A}logo.png`} alt="Kin Dee"/><div className="links"><div><a href="/#about">About</a><a href="/#products">Products</a><a href="/#service">Services</a><a href="#">Recipes</a><a href="#">Contact</a></div><div><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Cookies</a></div></div></div><div className="sealGrid">{Array.from({length:14},(_,i)=><img src={`${A}badge-${String(i+1).padStart(2,'0')}.png`} alt="" key={i}/>)}</div></div><div className="copyright"><span>©THE KIN DEE CO., LTD.</span><span className="socials"><img src={`${A}social-fb.svg`} alt="Facebook"/><img src={`${A}social-x.svg`} alt="X"/><img src={`${A}social-linkedin.svg`} alt="LinkedIn"/><img src={`${A}social-ig.svg`} alt="Instagram"/></span></div></footer>
+      <section className="condimentCta" id="catalog"><div data-reveal><h2>Bring More to<br/>the Table.</h2><p>Explore Kin Dee’s complete range of Southeast Asian food products, from everyday essentials to authentic regional flavors.</p><a className="outlineBtn" href="#">Download Catalog</a></div><em className="revealDelay1" data-reveal>there’s always more to discover</em><img className="revealDelay2" data-reveal src={`${A}condiments/catalog-cta.png`} alt="Kin Dee catalog with a curry bowl and ingredients" /></section>
+      <footer><div className="footerMain" data-reveal><div><img className="footerLogo" src={`${A}logo.png`} alt="Kin Dee"/><div className="links"><div><a href="/#about">About</a><a href="/#products">Products</a><a href="/#service">Services</a><a href="#">Recipes</a><a href="#">Contact</a></div><div><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Cookies</a></div></div></div><div className="sealGrid">{Array.from({length:14},(_,i)=><img src={`${A}badge-${String(i+1).padStart(2,'0')}.png`} alt="" key={i}/>)}</div></div><div className="copyright revealDelay1" data-reveal><span>©THE KIN DEE CO., LTD.</span><span className="socials"><img src={`${A}social-fb.svg`} alt="Facebook"/><img src={`${A}social-x.svg`} alt="X"/><img src={`${A}social-linkedin.svg`} alt="LinkedIn"/><img src={`${A}social-ig.svg`} alt="Instagram"/></span></div></footer>
     </main>
   );
 }
